@@ -1,0 +1,30 @@
+{
+  "name": "ONECOMMUNITY",
+  "version": "1.0.0",
+  "description": "An app that connects members to a global community of volunteers to help each other in need.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolerobertsb/ONECOMMUNITY.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolerobertsb/ONECOMMUNITY/issues"
+  },
+  "homepage": "https://github.com/nicolerobertsb/ONECOMMUNITY#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "handlebars": "^4.4.3",
+    "sequelize": "^5.19.6"
+  },
+  "nodemonConfig": {
+    "ext": "js,json,css,handlebars"
+  }
+}
