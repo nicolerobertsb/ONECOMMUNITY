@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Request = sequelize.define("Request", {
+    var Request = sequelize.define("request", {
     //   text: {
     //     type: DataTypes.STRING,
     //     allowNull: false,

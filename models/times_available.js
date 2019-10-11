@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Services = sequelize.define("services", {
+    var TimesAvailable = sequelize.define("times_available", {
     //   text: {
     //     type: DataTypes.STRING,
     //     allowNull: false,
@@ -12,5 +12,5 @@ module.exports = function(sequelize, DataTypes) {
     //     defaultValue: false
     //   }
     });
-    return Services;
+    return TimesAvailable;
 };
