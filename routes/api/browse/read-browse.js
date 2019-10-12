@@ -5,7 +5,7 @@ var db = require('../../../models');
 // Create an Express Router to allow routing via files external to server.js
 var router = express.Router();
 
-console.log('request-search');
+console.log('read-browse');
 
 // Export these routers
 module.exports = router;
