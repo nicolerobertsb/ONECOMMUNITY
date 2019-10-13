@@ -17,7 +17,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Set up the view engine of Express to use Handlebars
-app.engine("handlebars", handlebars({ defaultLayout: "main" }));
+app.engine("handlebars", handlebars({
+    defaultLayout: 'main',
+    helpers: {
+        partial: function (name) {
+            return name;
+        }
+    }
+}));
 app.set("view engine", "handlebars");
 
 // Set up Express to use our external routes
