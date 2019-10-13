@@ -6,6 +6,23 @@ var db = require('../../../models');
 var router = express.Router();
 
 console.log('read-user');
+app.get("/api/users", function(req, res) {
+    // 1. Add a join to include all of users
+    db.User.findAll({}).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  app.get("/api/users/:id", function(req, res) {
+    // 2; Add a join to include all of users
+    db.Author.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
 
 // Export these routers
 module.exports = router;
