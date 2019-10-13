@@ -16,12 +16,10 @@ module.exports = function(sequelize, DataTypes) {
         autoIncrement: true,
         unique: true
       },
-      volunteer_id: {
-        type: DataTypes.INTEGER,
+      finalized: {
+        type: DataTypes.BOOLEAN,
         primaryKey:true,
-        allowNull: false,
-        autoIncrement: true,
-        unique: true
+        allowNull: true,
       },
       detail: {
         type: DataTypes.TEXT,
@@ -29,6 +27,20 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
           len: [1]
         }          
+      },
+      requester_rating: {
+        type: DataTypes.INTEGER,
+        primaryKey:true,
+        allowNull: true,
+        autoIncrement: true,
+        unique: true
+      },
+      bounty_points: {
+        type: DataTypes.INTEGER,
+        primaryKey:true,
+        allowNull: true,
+        autoIncrement: true,
+        unique: true
       },
       start_date: {
           type: DataTypes.DATE,

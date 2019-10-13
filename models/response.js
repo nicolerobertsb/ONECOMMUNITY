@@ -16,6 +16,15 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true,
             unique: true            
         },
+        approved :{
+            type: DataTypes.BOOLEAN,
+            allowNull: false  
+        },
+        responder_rating :{
+            type: DataTypes.INTEGER,
+            primaryKey:true,
+            allowNull: true,        
+        },
         start_date: {
             type: DataTypes.DATE,
             allowNull: false
