@@ -12,6 +12,36 @@ module.exports = function(sequelize, DataTypes) {
           len: [1]
         }          
       },
+      address: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }          
+      },
+      hide_address: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      },
+      city: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }          
+      },
+      state: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }          
+      },
+      zipcode: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },      
       requester_rating: {
         type: DataTypes.INTEGER,
         allowNull: true
