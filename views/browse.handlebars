@@ -1,30 +1,53 @@
 <div class="container">
     <div class="row">
-        <h3 class="title">Browse Volunteers, Requests, and Events</h3>
+        <h3 class="title">Browse Active Volunteers and Requests</h3>
     </div>
     <div class="row">
-        <div class="input-field col s12 m4 l3">
-            <select multiple>
-                <option value="volunteers" selected>Volunteers</option>
-                <option value="requests" selected>Requests</option>
-                <option value="events" selected>Events</option>
-            </select>
-            <label>Active Items</label>
-        </div>
-        <div class="input-field col s12 m4 l3">
-            <select>
-                <option value="all" selected>All</option>
-                <option value="volunteers">Volunteers</option>
-                <option value="requests">Requests</option>
-                <option value="events">Events</option>
-            </select>
-            <label>Category</label>
-        </div>
-        <div class="input-field col s12 m4 l3">
-
-        </div>
-        <div class="input-field col s12 m4 l3">
-
+        <form id="browse-form" action="/api/browse" method="GET">
+            <div class="input-field col s12 m2">
+                <select id="active-items">
+                    {{#each activeItems}}
+                    {{> forms/option-element val=this.val text=this.text selected=this.selected disabled=this.disabled}}
+                    {{/each}}
+                </select>
+                <label>Active Items</label>
+            </div>
+            <div class="input-field col s12 m3">
+                <select id="categories">
+                    {{#each categories}}
+                    {{> forms/option-element val=this.val text=this.text selected=this.selected disabled=this.disabled}}
+                    {{/each}}
+                </select>
+                <label>Service Category</label>
+            </div>
+            <div class="input-field col s12 m3">
+                <select id="services">
+                    {{#each services}}
+                    {{> forms/option-element val=this.val text=this.text selected=this.selected disabled=this.disabled}}
+                    {{/each}}
+                </select>
+                <label>Service Type</label>
+            </div>
+            <div class="input-field col s12 m2">
+                <select id="order-by">
+                    {{#each orderBy}}
+                    {{> forms/option-element val=this.val text=this.text selected=this.selected disabled=this.disabled}}
+                    {{/each}}
+                </select>
+                <label>Ordery By</label>
+            </div>
+            <div class="input-field col s12 m2">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Filter
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div id="browse-results" class="col s12 m4 l3">
+            {{#each browseResults}}
+                {{> browse-result-item}}
+            {{/each}}
         </div>
     </div>
 </div>
