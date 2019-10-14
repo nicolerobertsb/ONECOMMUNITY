@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Service = sequelize.define("Service", {
+    var Services = sequelize.define("Services", {
       service_name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -9,10 +9,11 @@ module.exports = function(sequelize, DataTypes) {
       }, 
     });    
 
-    Service.associate = function(models) {
-        Author.hasMany(models.Request, {
-          onDelete: "cascade"
-        });
-      };
+    Services.associate = function(models) {
+      Services.belongsTo(models.ServiceCategories);
+      Services.belongsToMany(models.Users, {
+        through: 'UsersServicesJT'
+      });
+    };
     return Service;
   };

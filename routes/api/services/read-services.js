@@ -8,21 +8,39 @@ var router = express.Router();
 console.log('read-services');
 
 
-app.get("/api/services", function(req, res) {
+router.get("/api/services", function(req, res) {
     // 1. Add a join to include all of users
-    db.User.findAll({}).then(function(dbService) {
+    db.Services.findAll({}).then(function(dbService) {
       res.json(dbService);
     });
   });
 
-  app.get("/api/services/:id", function(req, res) {
+  router.get("/api/services/:id", function(req, res) {
     // 2; Add a join to include all of users
-    db.Author.findOne({
+    db.Services.findOne({
       where: {
         id: req.params.id
       }
     }).then(function(dbService) {
       res.json(dbService);
+    });
+  });
+  router.get("/api/services/categories", function(req, res) {
+    db.ServiceCategories.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbServiceCategories) {
+      res.json(dbServiceCategories);
+    });
+  });
+  router.get("/api/services/categories/:id", function(req, res) {
+    db.ServiceCategories.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbServiceCategories) {
+      res.json(dbServiceCategories);
     });
   });
 

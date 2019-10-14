@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var User = sequelize.define("User", {
+    var Users = sequelize.define("Users", {
       user_name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -30,34 +30,26 @@ module.exports = function(sequelize, DataTypes) {
       },
       rating: {
         type: DataTypes.INTEGER,
-        primaryKey:true,
         allowNull: true,
-        autoIncrement: true,
-        unique: true
       },
       social_points: {
         type: DataTypes.INTEGER,
-        primaryKey:true,
         defaultValue: 0,
       },
       historical_social_points: {
         type: DataTypes.INTEGER,
-        primaryKey:true,
         defaultValue: 0,
       }
     });
 
-    User.associate = function(models) {
-      Author.hasMany(models.Request, {
-        onDelete: "cascade"
+    Users.associate = function(models) {
+      Users.hasMany(models.Requests);
+      Users.hasMany(models.Responses);
+      Users.hasMany(models.AvailableTimes);
+      Users.belongsToMany(models.Services, {
+        through: 'UsersServicesJT'
       });
     };
-    User.associate = function(models) {
-      Author.hasMany(models.Response, {
-        onDelete: "cascade"
-      });
-    };
-  
-    return User;
+    return Users;
   };
   

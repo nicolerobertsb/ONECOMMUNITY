@@ -7,12 +7,15 @@ var router = express.Router();
 
 console.log('update-user');
 
-app.get("/api/users/:id", function(req, res) {
+router.get("/api/users/:id", function(req, res) {
     // Add sequelize code to find a single post where the id is equal to req.params.id,
-    db.User.update({
+    db.Users.update({
       user_name: req.body.user_name,
       email: req.body.email,
-      about_me: req.body.about,
+      about_me: req.body.about_me,
+      homepage_url: req.body.homepage_url,
+      linkedin_url: req.body.linkedin_url,
+      twitter_url: req.body.twitter_url,
     }, {
       where: {
         id: req.body.id
@@ -22,6 +25,30 @@ app.get("/api/users/:id", function(req, res) {
         res.json(dbUser);
       });
     // return the result to the user with res.json
+  });
+  router.post("/api/users/password", function(req, res) {
+    db.Users.update({
+      password: req.body.password
+    }, {
+      where: {
+        id: req.body.id
+      }
+    })
+      .then(function(dbUser) {
+        res.json(dbUser);
+      });
+  });
+  router.post("/api/users/password", function(req, res) {
+    db.Users.update({
+      user_rating: req.body.user_rating
+    }, {
+      where: {
+        id: req.body.id
+      }
+    })
+      .then(function(dbUser) {
+        res.json(dbUser);
+      });
   });
 
 
