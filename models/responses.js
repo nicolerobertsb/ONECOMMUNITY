@@ -2,6 +2,7 @@ module.exports = function(sequelize, DataTypes) {
     var Responses = sequelize.define("Responses", {
         approved :{
             type: DataTypes.BOOLEAN,
+            allowNull: false,
             defaultValue: false  
         },
         responder_rating :{
@@ -21,5 +22,5 @@ module.exports = function(sequelize, DataTypes) {
       Responses.belongsTo(models.Requests);
       Responses.belongsTo(models.Users);
     };
-    return Responses
+    return Responses;
 };
