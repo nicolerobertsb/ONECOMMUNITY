@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {{!-- \/material design links below\/ --}}
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    {{!-- ^material design links above^ --}}
+
+    <title>One Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    {{#each importedCss}}
+    <!-- Partial Start: {{this}} -->
+    {{> (partial this)}}
+
+    <!-- Partial End: {{this}} -->
+
+    {{/each}}
+</head>
+
+<body>
+    <header class=" mdc-top-app-bar mdc-top-app-bar--short">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <button
+                    class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon--unbounded">menu</button><span
+                    class="mdc-top-app-bar__title">onecommunity</span> </section>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+                    aria-label="Bookmark this page">bookmark</button>
+            </section>
+        </div>
+    </header>
+    {{{body}}}
+    <footer>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2019 Copyright onecommunity
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    {{#each importedScripts}}
+    <!-- Partial Start: {{this}} -->
+    {{> (partial this)}}
+
+    <!-- Partial End: {{this}} -->
+
+    {{/each}}
+    <script>
+    {{#each scripts}}
+    // Partial Start: {{this}}
+    {{> (partial this)}}
+
+    // Partial End: {{this}}
+
+    {{/each}}
+    </script>
+</body>
+</html>

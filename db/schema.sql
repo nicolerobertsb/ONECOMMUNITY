@@ -7,13 +7,23 @@ CREATE TABLE user(
     user_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     about_me TEXT NOT NULL,
+    user_rating INT,
+    user_social_points INT,
     PRIMARY KEY(id)
+);
+
+CREATE TABLE services_category(
+    id INT AUTO_INCREMENT NOT NULL,
+    services_category_name VARCHAR (255) NOT NULL,
+    PRIMARY KEY (id)
 );
 ​
 CREATE TABLE services(
     id INT AUTO_INCREMENT NOT NULL,
+    services_category_id INT NOT NULL,
     service_name VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (services_category_id) REFERENCES services_category(id)
 );
 ​
 CREATE TABLE request(
