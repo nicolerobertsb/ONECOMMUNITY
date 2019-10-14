@@ -5,8 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>One Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    {{#each importedCss}}
+    <!-- Partial Start: {{this}} -->
+    {{> (partial this)}}
+
+    <!-- Partial End: {{this}} -->
+
+    {{/each}}
 </head>
 <body>
     {{{body}}}
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    {{#each importedScripts}}
+    <!-- Partial Start: {{this}} -->
+    {{> (partial this)}}
+
+    <!-- Partial End: {{this}} -->
+
+    {{/each}}
+    <script>
+    {{#each scripts}}
+    // Partial Start: {{this}}
+    {{> (partial this)}}
+
+    // Partial End: {{this}}
+
+    {{/each}}
+    </script>
 </body>
 </html>

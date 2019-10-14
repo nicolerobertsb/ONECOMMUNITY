@@ -1,0 +1,17 @@
+(function(){
+    $('browse-form').on('submit', function (jqueryEvent) {
+        jqueryEvent.preventDefault();
+    
+        $.get(
+            '/api/browse',
+            $(this).serialize(),
+            function (res) {
+                syncResults(res);
+            }
+        );
+    });
+
+    function syncResults (res) {
+        
+    }
+})();
