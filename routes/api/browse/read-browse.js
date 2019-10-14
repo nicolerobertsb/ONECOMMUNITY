@@ -8,16 +8,16 @@ var router = express.Router();
 console.log('read-browse');
 
 
-app.get("/api/requests", function(req, res) {
+router.get("/api/requests", function(req, res) {
     // 1. Add a join to include all of users
-    db.User.findAll({}).then(function(dbRequest) {
+    db.Requests.findAll({}).then(function(dbRequest) {
       res.json(dbRequest);
     });
   });
 
-  app.get("/api/requests/:id", function(req, res) {
+  router.get("/api/requests/:id", function(req, res) {
     // 2; Add a join to include all of users
-    db.Author.findOne({
+    db.Requests.findOne({
       where: {
         id: req.params.id
       }

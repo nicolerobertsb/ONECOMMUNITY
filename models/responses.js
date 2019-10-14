@@ -21,5 +21,5 @@ module.exports = function(sequelize, DataTypes) {
       Responses.belongsTo(models.Requests);
       Responses.belongsTo(models.Users);
     };
-    return Response
+    return Responses
 };

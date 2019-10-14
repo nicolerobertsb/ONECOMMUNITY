@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Available_times = sequelize.define("Available_times", {
+    var AvailableTimes = sequelize.define("AvailableTimes", {
         start_date: {
             type: DataTypes.DATE,
             allowNull: false
@@ -9,4 +9,5 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         }
     });
+    return AvailableTimes;
 }

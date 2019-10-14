@@ -1,19 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Request = sequelize.define("Request", {
-      // recipient_id: {
-      //   type: DataTypes.INTEGER,
-      //   primaryKey:true,
-      //   allowNull: false,
-      //   autoIncrement: true,
-      //   unique: true
-      // },
-      // services_id: {
-      //   type: DataTypes.INTEGER,
-      //   primaryKey:true,
-      //   allowNull: false,
-      //   autoIncrement: true,
-      //   unique: true
-      // },
+    var Requests = sequelize.define("Requests", {
       finalized: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
@@ -54,6 +40,6 @@ module.exports = function(sequelize, DataTypes) {
         Requests.belongsTo(models.Services);
         Requests.hasMany(models.Responses);
       };
-    return Request;
+    return Requests;
   };
 
