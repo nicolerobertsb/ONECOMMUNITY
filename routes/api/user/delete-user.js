@@ -7,5 +7,16 @@ var router = express.Router();
 
 console.log('delete-user');
 
+  router.delete("/api/users/:id", function(req, res) {
+    db.Users.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+
 // Export these routers
 module.exports = router;
