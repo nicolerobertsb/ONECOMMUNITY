@@ -7,7 +7,7 @@ var router = express.Router();
 
 console.log('update-user');
 
-router.put("/api/users/:id", function(req, res) {
+router.put("/api/users", function(req, res) {
     // Add sequelize code to find a single post where the id is equal to req.params.id,
     db.Users.update({
       user_name: req.body.user_name,
@@ -39,7 +39,7 @@ router.put("/api/users/:id", function(req, res) {
         res.json(dbUser);
       });
   });
-  router.put("/api/users/password", function(req, res) {
+  router.put("/api/users/rating", function(req, res) {
     db.Users.update({
       user_rating: req.body.user_rating
     }, {

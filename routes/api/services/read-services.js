@@ -25,24 +25,6 @@ router.get("/api/services", function(req, res) {
       res.json(dbService);
     });
   });
-  router.get("/api/services/categories", function(req, res) {
-    db.ServiceCategories.findAll({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbServiceCategories) {
-      res.json(dbServiceCategories);
-    });
-  });
-  router.get("/api/services/categories/:id", function(req, res) {
-    db.ServiceCategories.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbServiceCategories) {
-      res.json(dbServiceCategories);
-    });
-  });
 
 // Export these routers
 module.exports = router;

@@ -53,10 +53,12 @@ module.exports = function(sequelize, DataTypes) {
       },
       social_points: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         defaultValue: 0,
       },
       historical_social_points: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         defaultValue: 0,
       }
     });
