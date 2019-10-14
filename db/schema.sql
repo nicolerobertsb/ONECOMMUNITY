@@ -8,6 +8,7 @@ CREATE TABLE user(
     email VARCHAR(255) NOT NULL,
     about_me TEXT NOT NULL,
     user_rating INT,
+    user_social_points INT,
     PRIMARY KEY(id)
 );
 
