@@ -2,6 +2,7 @@ module.exports = function(sequelize, DataTypes) {
     var Requests = sequelize.define("Requests", {
       finalized: {
         type: DataTypes.BOOLEAN,
+        allowNull: false,
         defaultValue: false
       },
       detail: {
@@ -28,13 +29,6 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: true
       }
     });
-    Users.associate = function(models) {
-        Users.belongsTo(models.User, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
-      };
       Requests.associate = function(models) {
         Requests.belongsTo(models.Users);
         Requests.belongsTo(models.Services);

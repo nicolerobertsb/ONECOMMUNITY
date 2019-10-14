@@ -13,7 +13,7 @@ router.get("/api/users", function(req, res) {
     });
   });
 
-  router.get("/api/users", function(req, res) {
+  router.get("/api/users/:id", function(req, res) {
     // 2; Add a join to include all of users
     db.Users.findOne({
       where: {

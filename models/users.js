@@ -28,6 +28,25 @@ module.exports = function(sequelize, DataTypes) {
           len: [1]
         }
       },
+      homepage_url: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: ""
+      },
+      linkedin_url: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: ""
+      },
+      twitter_url: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: ""
+      },
+      zipcode: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       rating: {
         type: DataTypes.INTEGER,
         allowNull: true,
