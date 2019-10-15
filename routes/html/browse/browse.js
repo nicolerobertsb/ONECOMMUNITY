@@ -126,11 +126,28 @@ var gatherOrderingOptions = function (selectedIndex) {
 
 router.get('/browse', function (req, res) {
 
+    if (!req.body.hasOwnProperty('activeItems')) req.body.activeItems = 0;
+    if (!req.body.hasOwnProperty('category')) req.body.category = 0;
+    if (!req.body.hasOwnProperty('service')) req.body.service = 0;
+    if (!req.body.hasOwnProperty('orderBy')) req.body.service = 0;
+
+    var rows = [
+        {itemType:'volunteer', summary:'Nathan<br>Available for: Pet - Walking<br>Time: Oct 19, 7am-7pm'},
+        {itemType:'volunteer', summary:'Jason<br>Available for: Pet - Grooming<br>Time: Oct 20, 7am-3pm'},
+        {itemType:'request', summary:'Tanaka<br>Requesting: Delivery - Other<br>Time: Oct 20, 6pm-8pm'},
+        {itemType:'request', summary:'Miho<br>Requesting: Household - Yard Work<br>Time: Oct 21, 6am-2pm'},
+        {itemType:'volunteer', summary:'Mary<br>Available for: Professional - Taxes<br>Time: Oct 21, 6pm-9pm'},
+        {itemType:'request', summary:'Jerry<br>Requesting: Household - Plumbing<br>Time: Oct 21, 9pm-3am'},
+        {itemType:'volunteer', summary:'Ruby<br>Available for: Household - Home Repairs<br>Time: Oct 23, 4pm-8pm'},
+    ];
+
     res.render('browse', {
-        activeItems: gatherActiveItems(['volunteers','requests']),
-        categories: gatherCategories(1),
-        services: gatherServices(0, 1),
-        orderBy: gatherOrderingOptions(0),
+        
+        browseResults: rows,
+        activeItems: gatherActiveItems(req.body.activeItems),
+        categories: gatherCategories(req.body.category),
+        services: gatherServices(req.body.category, req.body.service),
+        orderBy: gatherOrderingOptions(req.body.orderBy),
         importedCss: [
             'imported_css/materialize-icons'
         ],

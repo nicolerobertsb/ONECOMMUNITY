@@ -43,11 +43,9 @@
             </div>
         </form>
     </div>
-    <div class="row">
-        <div id="browse-results" class="col s12 m4 l3">
-            {{#each browseResults}}
-                {{> browse-result-item}}
-            {{/each}}
-        </div>
+    <div id="browse-results" class="row">
+        {{#each browseResults}}
+            {{> browse/browse-result-item itemType=this.itemType summary=this.summary}}
+        {{/each}}
     </div>
 </div>
