@@ -7,5 +7,4 @@ var router = express.Router();
 
 console.log('read-browse');
 
-// Export these routers
 module.exports = router;
