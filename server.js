@@ -40,4 +40,4 @@ db.sequelize.sync({ force: true }) // Drop all data, and Recreate the tables
         // Log (server-side) when our server has started
         console.log("Server listening on: http://localhost:" + PORT);
     });
-});
+}).catch(err=> console.log(err))

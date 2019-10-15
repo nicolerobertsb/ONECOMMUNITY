@@ -1,3 +1,74 @@
 a.card-panel {
     display: block;
 }
+
+
+footer {
+    position:fixed;bottom:0;left:0;width:100%;
+}
+/*body {*/
+/*    display: flex;*/
+/*    min-height: 110vh;*/
+/*    flex-direction: column;*/
+/*}*/
+
+/*main {*/
+/*    flex: 1 0 auto;*/
+/*}*/
+
+body {
+    background-image: url("/images/doodles.png");
+    background-size: auto;
+    background-repeat: repeat;
+    color: antiquewhite;
+    text-shadow: 1px 1px #000000;
+
+
+}
+
+.text-outline-shadow {
+    text-shadow: 1px 1px #000000;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+}
+
+#logo {
+    margin: auto;
+}
+
+
+
+.flex-logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+@media screen and (min-width: 601px){
+    /*.name-box {*/
+    /*    border: solid thin #000000;*/
+    /*    border-radius: 0.3rem;*/
+    /*    background-color: rgba(170, 169, 177, 0.72);*/
+    /*    color: #101cff;*/
+    /*    margin: 2%;*/
+    /*    padding-right: 2%;*/
+    /*}*/
+}
+
+@media screen and (max-width: 600px){
+    body {
+        background-image: url("/images/coffee2.jpg");
+        background-size: cover;
+        no-repeat center fixed;
+
+    }
+
+}
+
+@media screen and (min-width: 993px){
+
+}
+
+@media screen and (min-width: 1201px){
+
+}
