@@ -1,3 +1,116 @@
 a.card-panel {
     display: block;
 }
+
+main {
+    text-align: center;
+}
+
+#logo {
+    margin: auto;
+}
+
+#logo-p {
+    color: white;
+    /*font-size: xx-large;*/
+    font-weight: 500;
+    -webkit-text-stroke-width: 0.9px;
+    -webkit-text-stroke-color: black;
+}
+
+footer {
+    position:fixed;bottom:0;left:0;width:100%;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    /* The image used */
+    background-image: url("/images/1791.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+body {
+    color: white;
+    text-shadow: 1px 1px #000000;
+}
+
+.text-outline-shadow {
+    text-shadow: 3.5px 3.5px #000000;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: black;
+}
+
+
+
+
+
+.flex-logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
+@media screen and (max-width: 600px){
+       body, html {
+        height: 100%;
+    }
+
+    body {
+        /* The image used */
+        background-image: url("/images/coffee2.jpg");
+
+        /* Full height */
+        height: 100%;
+
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .logo-p2 {
+        margin-top: 22%;
+
+    }
+
+}
+
+@media screen and (min-width: 601px){
+    .logo-box {
+        border: solid thin #000000;
+        border-radius: 9rem;
+        background-color: rgba(170, 169, 177, 0.90);
+        color: #999999;
+        display: inline-block;
+    }
+
+    .logo-box2 {
+        margin-top: 1.5%;
+        border: solid thin #000000;
+        border-radius: 3rem;
+        background-color: rgba(170, 169, 177, 0.90);
+        display: inline-block;
+    }
+}
+
+@media screen and (min-width: 993px){
+
+}
+
+@media screen and (min-width: 1201px){
+
+}
