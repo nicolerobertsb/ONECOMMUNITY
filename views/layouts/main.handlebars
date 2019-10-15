@@ -8,6 +8,7 @@
     <title>One Community</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     {{#each importedCss}}
     <!-- Partial Start: {{this}} -->
@@ -29,7 +30,7 @@
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="badges.html">Components</a></li>
                 <li><a href="collapsible.html">Javascript</a></li>
-                <li><a href="mobile.html">Mobile</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">contributions</a></li>
             </ul>
         </div>
     </nav>
@@ -40,6 +41,18 @@
         <li><a href="collapsible.html">Javascript</a></li>
         <li><a href="mobile.html">Mobile</a></li>
     </ul>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4 class="blue-text">Contributors</h4>
+            <p><a href="https://www.freepik.com/free-photos-vectors/background" target="_blank">Background photo created by jcomp - www.freepik.com</a></p>
+        </div>
+<!--        <div class="modal-footer">-->
+<!--            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>-->
+<!--        </div>-->
+    </div>
+
 </header>
 
 <main>
@@ -77,9 +90,16 @@
     {{/each}}
     </script>
 
-<script> $(document).ready(function(){
+<script>
+    $(document).ready(function(){
     $('.sidenav').sidenav();
-});</script>
+    });
+
+    $(document).ready(function(){
+        $('.modal').modal();
+    });
+
+</script>
 
 </body>
 </html>
