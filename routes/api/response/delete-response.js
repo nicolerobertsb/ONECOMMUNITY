@@ -7,5 +7,14 @@ var router = express.Router();
 
 console.log('delete-response');
 
+router.post("/api/responses/:id", function (req, res){
+    db.Responses.destroy({
+        where:{
+            id: req.params.id
+        }
+    }).then(function(dbResponse){
+        res.json(dbResponse);
+    });
+});
 // Export these routers
 module.exports = router;
