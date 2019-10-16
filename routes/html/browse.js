@@ -129,7 +129,7 @@ router.get('/browse', function (req, res) {
     if (!req.body.hasOwnProperty('activeItems')) req.body.activeItems = 0;
     if (!req.body.hasOwnProperty('category')) req.body.category = 0;
     if (!req.body.hasOwnProperty('service')) req.body.service = 0;
-    if (!req.body.hasOwnProperty('orderBy')) req.body.service = 0;
+        if (!req.body.hasOwnProperty('orderBy')) req.body.service = 0;
 
     var rows = [
         {itemType:'volunteer', summary:'Nathan<br>Available for: Pet - Walking<br>Time: Oct 19, 7am-7pm'},
