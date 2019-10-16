@@ -36,7 +36,7 @@
         </div>
     </navnav-color>
 
-    <ul class="sidenav" id="mobile-demo">
+    <ul class="sidenav nav-color" id="mobile-demo">
         <li><a href="/browse">Browse</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
@@ -75,7 +75,7 @@
 </main>
 
     <footer>
-        <nav>
+        <nav class="nav-color blue lighten-4">
         <div class="footer-copyright">
             <div class="container">
                 © 2019 Copyright onecommunity
@@ -114,6 +114,13 @@
     $(document).ready(function() {
         M.updateTextFields();
     });
+
+    var mybutton = document.getElementById("myBtn")
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
     
 </script>
 
