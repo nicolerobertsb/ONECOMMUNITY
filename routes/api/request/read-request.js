@@ -6,6 +6,23 @@ var db = require('../../../models');
 var router = express.Router();
 
 console.log('read-request');
+router.get("/api/requests", function(req,res){
+    //add a join to include all the requests
+    db.Requests.findAll({}).then(function(dbRequest){
+        res.json(dbRequest);
+    });
+});
+
+router.get("/api/requests/:id", function(req, res){
+    // add a join to include all of the requests
+    db.Requests.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(function(dbRequest){
+        res.json(dbRequest);
+    });
+});
 
 // Export these routers
 module.exports = router;

@@ -7,5 +7,19 @@ var router = express.Router();
 
 console.log('update-response');
 
+router.put("/api/responses", function(req, res){
+    db.Responses.update({
+        start_date: req.body.start_date,
+        end_date: req.body.end_date,
+    },{
+        where:{
+            id: req.body.id
+        }
+    })
+    .then(function(dbResponse){
+        res.json(dbResponse);
+    });
+});
+
 // Export these routers
 module.exports = router;
