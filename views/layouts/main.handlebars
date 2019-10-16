@@ -28,9 +28,10 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
             <ul class="right hide-on-med-and-down">
-                <button data-target="modal3" class="btn modal-trigger blue darken-3">Provide a service</button>
-                <button data-target="modal4" class="btn modal-trigger blue darken-3">Request a service</button>
-
+                <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Provide a service</a></li>
+<!--                <button data-target="modal3" class="btn modal-trigger blue darken-3">Provide a service</button>-->
+                <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a></li>
+<!--                <button data-target="modal4" class="btn modal-trigger blue darken-3">Request a service</button>-->
                 <li><a href="/browse">Browse</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
@@ -44,35 +45,25 @@
         <li><a href="/browse">Browse</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
-        <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Provide a service</a>
-        <br><br>
-        <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a>
-        <br><br>
-        <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal2">Sign up | Login</a>
-        <br><br>
-        <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal1">Contributions</a>
-<!--        <button data-target="modal3" class="btn modal-trigger blue darken-3">Provide a service</button>-->
+        <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Provide a service</a></li>
 
-<!--        <button data-target="modal4" class="btn modal-trigger blue darken-3">Request a service</button>-->
+        <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a></li>
 
-<!--        <button data-target="modal2" class="btn modal-trigger blue darken-3">Sign up | Login</button>-->
-        <br>
-<!--        <button data-target="modal1" class="btn modal-trigger button-margin blue darken-3">Contributions</button>-->
+        <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal2">Sign up | Login</a></li>
+
+        <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal1">Contributions</a></li>
     </ul>
 
-    <!-- Modal Structure 1-->
+    <!-- Modal Structure 1  CREDIT FOR BACKGROUND IMAGE-->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <h4 class="blue-text">Contributors</h4>
             <p><a href="https://www.freepik.com/free-photos-vectors/background" target="_blank">Background photo created by jcomp - www.freepik.com</a></p>
         </div>
-<!--        <div class="modal-footer">-->
-<!--            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>-->
-<!--        </div>-->
     </div>
 
 
-    <!-- Modal Structure 2-->
+    <!-- Modal Structure 2 SIGN UP | REGISTER-->
     <div id="modal2" class="modal">
         <div class="modal-content">
             <form class="modal-content animate" action="/action_page.php" method="post">
@@ -101,21 +92,6 @@
   </form>
 </div>
 
-<script>
-// Get the modal
-var modal = document.getElementById('modal2');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-        {{!-- <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div> --}}
-    {{!-- </div> --}}
 
 </header>
 
@@ -174,6 +150,16 @@ window.onclick = function(event) {
     function topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+    }
+
+    // Get the modal
+    var modal = document.getElementById('modal2');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
     
 </script>
