@@ -11,9 +11,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Services.associate = function(models) {
     Services.belongsTo(models.ServiceCategories);
-    Services.belongsToMany(models.Users, {
-      through: 'UsersServicesJT'
-    });
+    Services.hasMany(models.ProvidedServices);
   };
   return Services;
 };
