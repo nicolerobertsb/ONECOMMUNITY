@@ -24,25 +24,28 @@
 <header>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">onecommunity</a>
+            <a href="/" class="brand-logo">onecommunity</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">Javascript</a></li>
-                <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">contributions</a></li>
+                <li><a href="/browse">Browse</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger" href="#modal2">Sign up | Login</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Contributions</a></li>
             </ul>
         </div>
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+        <li><a href="/browse">Browse</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <button data-target="modal2" class="btn modal-trigger">Sign up | Login</button>
+        <br>
+        <button data-target="modal1" class="btn modal-trigger button-margin">Contributions</button>
     </ul>
 
-    <!-- Modal Structure -->
+    <!-- Modal Structure 1-->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <h4 class="blue-text">Contributors</h4>
@@ -51,6 +54,18 @@
 <!--        <div class="modal-footer">-->
 <!--            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>-->
 <!--        </div>-->
+    </div>
+
+
+    <!-- Modal Structure 2-->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
     </div>
 
 </header>
