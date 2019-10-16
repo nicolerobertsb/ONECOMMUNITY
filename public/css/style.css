@@ -6,11 +6,11 @@ main {
     text-align: center;
 }
 
-#logo {
-    margin: auto;
+.button-margin {
+    margin-top: 2%;
 }
 
-#logo-p {
+.logo-p {
     color: white;
     /*font-size: xx-large;*/
     font-weight: 500;
