@@ -10,11 +10,30 @@ main {
     margin-top: 2%;
 }
 
+.nav-color {
+    background-color: #bbdefb;
+}
+
 .logo-p {
     color: white;
     /*font-size: xx-large;*/
     font-weight: 500;
     -webkit-text-stroke-width: 0.9px;
+    -webkit-text-stroke-color: black;
+    /*padding-right: 1%;*/
+    /*padding-left: 1%;*/
+}
+
+p.flow-text.logo-p.logo-p2 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.vol-modal-p {
+    color: white;
+    /*font-size: xx-large;*/
+    font-weight: 600;
+    -webkit-text-stroke-width: 0.7px;
     -webkit-text-stroke-color: black;
 }
 

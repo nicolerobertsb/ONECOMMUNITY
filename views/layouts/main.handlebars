@@ -22,19 +22,19 @@
 <body>
 
 <header>
-    <nav>
-        <div class="nav-wrapper">
+    <nav class="nav-color blue lighten-4">
+        <div class="nav-wrapper ">
             <a href="/" class="brand-logo">onecommunity</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="/browse">Browse</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a class="waves-effect waves-light btn modal-trigger" href="#modal2">Sign up | Login</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger" href="#modal2"><i class="material-icons left">account_box</i>Sign up | Login</a></li>
                 <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Contributions</a></li>
             </ul>
         </div>
-    </nav>
+    </navnav-color>
 
     <ul class="sidenav" id="mobile-demo">
         <li><a href="/browse">Browse</a></li>
@@ -110,6 +110,10 @@
     $('.sidenav').sidenav();
 
     $('.modal').modal();
+
+    $(document).ready(function() {
+        M.updateTextFields();
+    });
     
 </script>
 
