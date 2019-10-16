@@ -21,43 +21,48 @@
 
 <body>
 
-    <header>
-        <nav>
-            <div class="nav-wrapper">
-                <a href="/" class="brand-logo">onecommunity</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="/browse">Browse</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a class="waves-effect waves-light btn modal-trigger" href="#modal3">Sign up</a></li>
-                    <li><a class="waves-effect waves-light btn modal-trigger" href="#modal2">Login</a></li>
-                    <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Contributions</a></li>
-                </ul>
-            </div>
-        </nav>
+<header>
+    <nav class="nav-color blue lighten-4">
+        <div class="nav-wrapper ">
+            <a href="/" class="brand-logo">onecommunity</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="/browse">Browse</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <button data-target="modal3" class="btn modal-trigger">Sign up</button>
-            <button data-target="modal2" class="btn modal-trigger">Login</button>
-            <br>
-            <button data-target="modal1" class="btn modal-trigger button-margin">Contributions</button>
-        </ul>
+            <ul class="right hide-on-med-and-down">
+                <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Provide a service</a></li>
+<!--                <button data-target="modal3" class="btn modal-trigger blue darken-3">Provide a service</button>-->
+                <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a></li>
+<!--                <button data-target="modal4" class="btn modal-trigger blue darken-3">Request a service</button>-->
+                <li><a href="/browse">Browse</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Sign up</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal2">Login</a></li>
 
-        <!-- Modal Structure 1-->
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <h4 class="blue-text">Contributors</h4>
-                <p><a href="https://www.freepik.com/free-photos-vectors/background" target="_blank">Background photo
-                        created by jcomp - www.freepik.com</a></p>
-            </div>
-            <!--        <div class="modal-footer">-->
-            <!--            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>-->
-            <!--        </div>-->
+            </ul>
         </div>
+    </nav>
+
+    <ul class="sidenav nav-color" id="mobile-demo">
+        <li><a href="/browse">Browse</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Provide a service</a></li>
+
+        <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a></li>
+
+        <li><a class="waves-effect waves-light btn modal-trigger" href="#modal3">Sign up</a></li>
+        <li><a class="waves-effect waves-light btn modal-trigger" href="#modal2">Login</a></li>
+
+        <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal1">Contributions</a></li>
+    </ul>
+
+    <!-- Modal Structure 1  CREDIT FOR BACKGROUND IMAGE-->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4 class="blue-text">Contributors</h4>
+            <p><a href="https://www.freepik.com/free-photos-vectors/background" target="_blank">Background photo created by jcomp - www.freepik.com</a></p>
+        </div>
+    </div>
 
 
         <!-- Modal Structure 2-->
@@ -93,7 +98,7 @@
         </div>
 
         {{!-- MODAL STRUCTURE 3 --}}
-        
+
         <!-- The Modal (contains the Sign Up form) -->
         <div id="modal3" class="modal">
             <span onclick="document.getElementById('modal3').style.display='none'" class="close"
@@ -127,24 +132,6 @@
                 </div>
             </form>
         </div>
-
-        <script>
-            // Get the modal
-            var modal = document.getElementById('modal2');
-            var modal = document.getElementById('modal3');
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        </script>
-        {{!-- <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div> --}}
-        {{!-- </div> --}}
-
     </header>
 
     <main>
@@ -152,13 +139,18 @@
     </main>
 
     <footer>
-        <nav>
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2019 Copyright onecommunity
-                    <!--                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
-                </div>
+        <nav class="nav-color blue lighten-4">
+        <div class="footer-copyright row">
+
+            <div class="col m6 push-m3 s12 center-align">
+            © 2019 Copyright onecommunity
             </div>
+            <div class="col m6 hide-on-small-only hide-on-med-and-down right-align">
+              <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal1">Contributions</a>
+            </div>
+
+
+        </div>
         </nav>
     </footer>
 
@@ -174,27 +166,43 @@
 
     {{/each}}
     <script>
-        { { #each scripts } }
+        {{#each scripts}}
         // Partial Start: {{this}}
-        { {> (partial this) } }
+        {{> (partial this)}}
 
         // Partial End: {{this}}
 
-        {
-            {
-                /each}}
+        {{/each}}
     </script>
 
     <script>
 
             $('.sidenav').sidenav();
 
-            $('.modal').modal();
+    $('.modal').modal();
 
+    $(document).ready(function() {
+        M.updateTextFields();
+    });
 
+    var mybutton = document.getElementById("myBtn")
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 
-    </script>
+    // Get the modal
+    var modal = document.getElementById('modal2');
+    var modal = document.getElementById('modal3');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 </body>
-
 </html>
