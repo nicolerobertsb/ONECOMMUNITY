@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="row">
+        <h3 class="title">{{user_name}}</h3>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <p>Rating:</p>
+        </div>
+        <div class="col s12 m8 l9">
+            {{#if rating}}
+            <p>{{rating}} / 5</p>
+            {{else}}
+            <p>No Rating</p>
+            {{/if}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <p>Zip Code:</p>
+        </div>
+        <div class="col s12 m8 l9">
+            <p>{{zipcode}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <p>E-mail Address:</p>
+        </div>
+        <div class="col s12 m8 l9">
+            <p><a href="mailto:{{email}}">{{email}}</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <p>About:</p>
+        </div>
+        <div class="col s12 m8 l9">
+            <p>{{about_me}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <p>Website:</p>
+        </div>
+        <div class="col s12 m8 l9">
+            {{#if homepage_url}}
+            <p><a href="{{homepage_url}}" target="_blank">{{homepage_url}}</a></p>
+            {{else}}
+            <p>None</p>
+            {{/if}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <p>LinkedIn:</p>
+        </div>
+        <div class="col s12 m8 l9">
+            {{#if linkedin_url}}
+            <p><a href="{{linkedin_url}}" target="_blank">{{linkedin_url}}</a></p>
+            {{else}}
+            <p>None</p>
+            {{/if}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <p>Twitter:</p>
+        </div>
+        <div class="col s12 m8 l9">
+            {{#if twitter_url}}
+            <p><a href="{{twitter_url}}" target="_blank">{{twitter_url}}</a></p>
+            {{else}}
+            <p>None</p>
+            {{/if}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <p>Providing Services:</p>
+        </div>
+        <div class="col s12 m8 l9">
+            <ul>
+                {{#each services}}
+                <li><a href="/provided-service/{{this.provided_service_id}}">{{this.category_name}} - {{this.service_name}}</a></li>
+                {{else}}
+                <li>None</li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <p>Active Requests:</p>
+        </div>
+        <div class="col s12 m8 l9">
+            <ul>
+                {{#each requests}}
+                <li><a href="/request/{{this.request_id}}">{{this.category_name}} - {{this.service_name}}</a></li>
+                {{else}}
+                <li>None</li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <p>Active Request Responses:</p>
+        </div>
+        <div class="col s12 m8 l9">
+            <ul>
+                {{#each responses}}
+                <li><a href="/request/{{this.request_id}}">{{this.category_name}} - {{this.service_name}}</a></li>
+                {{else}}
+                <li>None</li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
