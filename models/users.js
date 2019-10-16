@@ -66,10 +66,7 @@ module.exports = function(sequelize, DataTypes) {
     Users.associate = function(models) {
       Users.hasMany(models.Requests);
       Users.hasMany(models.Responses);
-      Users.hasMany(models.AvailableTimes);
-      Users.belongsToMany(models.Services, {
-        through: 'UsersServicesJT'
-      });
+      Users.hasMany(models.ProvidedServices);
     };
     return Users;
   };
