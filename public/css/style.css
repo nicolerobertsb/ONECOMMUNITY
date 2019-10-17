@@ -6,6 +6,10 @@ main {
     text-align: center;
 }
 
+.contact-text-w {
+    color: white;
+}
+
 .button-margin {
     margin-top: 2%;
 }
