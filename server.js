@@ -34,7 +34,7 @@ app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitia
 // Set up Express to use our external routes
 app.use(routes);
 
-// Syncing our sequelize models and then starting our Express app
+// Syncing our sequelize models and then starting our Express app 1
 // =============================================================
 db.sequelize.sync({ force: true }) // Drop all data, and Recreate the tables
 // db.sequelize.sync() // Keep all data, and Initialize the tables
