@@ -13,7 +13,7 @@ router.put("/api/responses", function(req, res){
         end_date: req.body.end_date,
     },{
         where:{
-            id: req.body.id
+            id: parseInt(req.body.id)
         }
     })
     .then(function(dbResponse){
