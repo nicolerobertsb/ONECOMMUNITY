@@ -4,12 +4,12 @@ var db = require('../../models');
 
 // Create an Express Router to allow routing via files external to server.js
 var router = express.Router();
-console.log("contactRoute")
+console.log("aboutRoute")
 
 
-router.get('/contact', function (req, res) {
+router.get('/about', function (req, res) {
 
-  res.render('contact', {
+  res.render('about', {
     session_user: req.session.user || false,
 
     // importedCss: [
