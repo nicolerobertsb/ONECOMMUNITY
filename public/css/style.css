@@ -366,20 +366,27 @@ input[type=text], input[type=password] {
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    width: 80%; /* Full width */
+    height: 80%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+  }
+
+  .modal.open {
+      top: 15%!important;
   }
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    background-color: #455a64;
+    /*margin: 5% auto 15% auto;*/ /* This does not work as intended. Margin and padding percentages are all based off width. 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 100%; /* Could be more or less, depending on screen size */
+    margin: 0px auto;
+  }
+
+  .modal-footer {
   }
   
   /* The Close Button (x) */
