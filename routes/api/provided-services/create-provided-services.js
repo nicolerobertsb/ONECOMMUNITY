@@ -5,14 +5,13 @@ var db = require('../../../models');
 // Create an Express Router to allow routing via files external to server.js
 var router = express.Router();
 
-console.log('create-request');
 
-router.post("/api/requests", function (req, res){
-    console.log('TESTING***************');
-    console.log(req.body);
-    db.Requests.create(req.body).then(function(dbRequest){
-        res.json(dbRequest);
-    });
+router.post("/api/provided-services", function(req, res) {
+	console.log(req.body);
+	db.ProvidedServices.create(req.body)
+	.then(function(dbProvidedServices) {
+		res.json(dbProvidedServices);
+	});
 });
 
 // Export these routers
