@@ -10,6 +10,7 @@ console.log("contactRoute")
 router.get('/Contact', function (req, res) {
 
   res.render('contact', {
+    session_user: req.session.user || false,
 
     // importedCss: [
     //     'imported_css/materialize-icons'
