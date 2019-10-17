@@ -1,11 +1,26 @@
 a.card-panel {
     display: block;
 }
+a.card-panel.item-volunteer {
+    background-color: #2196f3;
+}
+a.card-panel.item-request {
+    background-color: #f44336;
+}
+.select-dropdown {
+    color: #fff;
+}
+.select-dropdown > li > span {
+  color: #2196f3;
+}
+.select-wrapper > input.select-dropdown:focus {
+  border-bottom: 1px solid #2196f3;
+}
 
 .browse-box {
-    border: solid thin #000000;
-    border-radius: 1rem;
-    background-color: rgba(21, 101, 192, 0.7);
+    /* border: solid thin #000000;
+    border-radius: 1rem; */
+    /* background-color: rgba(21, 101, 192, 0.7); */
     margin-top: 1px;
     /*color: #999999;*/
     /*display: inline-block;*/

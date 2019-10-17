@@ -6,10 +6,10 @@ var db = require('../../models');
 var router = express.Router();
 console.log("homeRoute")
 
-
 router.get('/', function (req, res) {
 
     res.render('index', {
+        
 
         // importedCss: [
         //     'imported_css/materialize-icons'

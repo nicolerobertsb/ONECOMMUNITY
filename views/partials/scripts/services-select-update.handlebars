@@ -1,0 +1,28 @@
+var categorySelect = $('{{options.categorySelector}}');
+var serviceSelect = $('{{options.serviceSelector}}');
+
+categorySelect.on('change', function () {
+    var categoryId = parseInt($(this).val());
+    var servicesByCategory = {
+        {{#each options.categories}}
+        {{@key}}: [
+            {{#each this}}
+            {
+                val: {{this.val}},
+                text: '{{this.text}}',
+                selected: {{this.selected}},
+                disabled: {{this.disabled}},
+            },
+            {{/each}}
+        ],
+        {{/each}}
+    };
+
+    serviceSelect.empty();
+    servicesByCategory[categoryId].forEach(function (service) {
+        serviceSelect.append(
+            $(`<option value="${service.val}"${service.selected ? ' selected' : ''}${service.disabled ? ' disabled' : ''}>${service.text}</option>`)
+        );
+    });
+    serviceSelect.formSelect();
+});
