@@ -6,16 +6,39 @@ main {
     text-align: center;
 }
 
+.contact-text-w {
+    color: white;
+}
+
 .button-margin {
     margin-top: 2%;
 }
 
+.nav-color {
+    background-color: #bbdefb;
+}
+
 .logo-p {
     color: white;
+    font-size: xx-large;
+    font-weight: 400;
+    /*-webkit-text-stroke-width: 0.9px;*/
+    /*-webkit-text-stroke-color: black;*/
+
+}
+
+/*p.flow-text.logo-p.logo-p2 {*/
+/*    !*padding-left: 15px;*!*/
+/*    !*padding-right: 15px;*!*/
+
+/*}*/
+
+.vol-modal-p {
+    color: white;
     /*font-size: xx-large;*/
-    font-weight: 500;
-    -webkit-text-stroke-width: 0.9px;
-    -webkit-text-stroke-color: black;
+    font-weight: 600;
+    /*-webkit-text-stroke-width: 0.7px;*/
+    /*-webkit-text-stroke-color: black;*/
 }
 
 footer {
@@ -43,7 +66,7 @@ body {
 
 body {
     color: white;
-    text-shadow: 1px 1px #000000;
+    /*text-shadow: 1px 1px #000000;*/
 }
 
 .text-outline-shadow {
@@ -51,9 +74,6 @@ body {
     -webkit-text-stroke-width: 1.5px;
     -webkit-text-stroke-color: black;
 }
-
-
-
 
 
 .flex-logo {
@@ -70,7 +90,7 @@ body {
 
     body {
         /* The image used */
-        background-image: url("/images/coffee2.jpg");
+        background-image: url("/images/1791.jpg");
 
         /* Full height */
         height: 100%;
@@ -87,24 +107,26 @@ body {
 
     }
 
+
+
 }
 
 @media screen and (min-width: 601px){
     .logo-box {
         border: solid thin #000000;
         border-radius: 9rem;
-        background-color: rgba(170, 169, 177, 0.90);
-        color: #999999;
+        background-color: rgba(121, 134, 203, 0.7);
+        /*color: #999999;*/
         display: inline-block;
     }
 
-    .logo-box2 {
-        margin-top: 1.5%;
-        border: solid thin #000000;
-        border-radius: 3rem;
-        background-color: rgba(170, 169, 177, 0.90);
-        display: inline-block;
-    }
+    /*.logo-box2 {*/
+    /*    margin-top: 1.5%;*/
+    /*    border: solid thin #000000;*/
+    /*    border-radius: 3rem;*/
+    /*    background-color: rgba(170, 169, 177, 0.90);*/
+    /*    display: inline-block;*/
+    /*}*/
 }
 
 @media screen and (min-width: 993px){
