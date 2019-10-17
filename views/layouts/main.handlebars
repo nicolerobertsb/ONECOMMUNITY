@@ -28,10 +28,12 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons blue-grey-text darken-4">menu</i></a>
 
             <ul class="right hide-on-med-and-down">
+                {{#if session_user}}
                 <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal5">Provide a service</a></li>
 <!--                <button data-target="modal3" class="btn modal-trigger blue darken-3">Provide a service</button>-->
                 <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a></li>
 <!--                <button data-target="modal4" class="btn modal-trigger blue darken-3">Request a service</button>-->
+                {{/if}}
                 <li><a href="/browse" class="blue-grey-text darken-4">Browse</a></li>
                 <li><a href="#" class="blue-grey-text darken-4">About</a></li>
                 <li><a href="/contact" class="blue-grey-text darken-4">Contact</a></li>
@@ -50,10 +52,9 @@
         <li><a href="/browse">Browse</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
-        <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal5">Provide a service</a></li>
-
-        <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a></li>
         {{#if session_user}}
+        <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal5">Provide a service</a></li>
+        <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a></li>
         <li>Logged in as: {{session_user.user_name}}</li>
         <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="/logout">Logout</a></li>
         {{else}}
@@ -160,7 +161,7 @@
 
     <!-- Modal Structure -->
     <div id="modal5" class="modal">
-        <form action="/api/provided-services" method="POST">
+        <form id="provide-service-form">
             <div class="modal-content">
                 <h4 class="vol-modal-p">Provide a service</h4>
                 <h5 class="vol-modal-p">Fill out what service you would like to provide and when</h5>
@@ -253,7 +254,7 @@
 
     <!-- Modal Structure -->
     <div id="modal4" class="modal">
-        <form action="/api/provided-services" method="POST">
+        <form id="request-service-form">
             <div class="modal-content">
                 <h4 class="vol-modal-p">Request a service</h4>
                 <h5 class="vol-modal-p">Fill out what service you would like to request and when</h5>
@@ -381,15 +382,12 @@
     <footer>
         <nav class="nav-color blue lighten-4">
         <div class="footer-copyright row">
-
             <div class="col m6 push-m3 s12 center-align blue-grey-text darken-4">
             © 2019 Copyright onecommunity
             </div>
             <div class="col m6 hide-on-small-only hide-on-med-and-down right-align">
               <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal1">Contributions</a>
             </div>
-
-
         </div>
         </nav>
     </footer>
@@ -420,10 +418,20 @@
     $('.sidenav').sidenav();
     $('select').formSelect();
     $('.modal').modal();
-    $('.datepicker').datepicker();
-    $('.timepicker').timepicker();
     $('textarea').characterCounter();
     M.updateTextFields();
+
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, {
+        defaultDate: new Date(),
+        format: 'yyyy-mm-dd'
+    });
+
+    var elems = document.querySelectorAll('.timepicker');
+    var instances = M.Timepicker.init(elems, {
+        defaultTime: 'now',
+        twelveHour: false
+    });
 
     var mybutton = document.getElementById("myBtn");
     // When the user clicks on the button, scroll to the top of the document
@@ -449,7 +457,7 @@
                 window.location.reload();
             }
         );
-    })
+    });
 
     $('#login-form').on('submit', function (jqueryEvent) {
         jqueryEvent.preventDefault();
@@ -461,7 +469,71 @@
                 window.location.reload();
             }
         );
-    })
+    });
+
+    $('#provide-service-form').on('submit', function (jqueryEvent) {
+        jqueryEvent.preventDefault();
+
+        var serviceId = parseInt($('#providedService-services').val());
+        var categoryId;
+        if (serviceId >= 1 && serviceId <= 6) categoryId = 1;
+        else if (serviceId >= 7 && serviceId <= 9) categoryId = 2;
+        else if (serviceId >= 10 && serviceId <= 20) categoryId = 3;
+        else if (serviceId >= 21 && serviceId <= 25) categoryId = 4;
+        else if (serviceId >= 26 && serviceId <= 29) categoryId = 5;
+        else if (serviceId === 30) categoryId = 6;
+
+        var startDateTime = $('#providedService-beginDate').val() + ' ' + $('#providedService-beginTime').val() + ':00';
+        var endDateTime = $('#providedService-endDate').val() + ' ' + $('#providedService-endTime').val() + ':00';
+        $.post(
+            '/api/provided-services',
+            {
+                start_date: startDateTime,
+                end_date: endDateTime,
+                UserId: {{#if session_user}}{{session_user.id}}{{else}}-1{{/if}},
+                ServiceId: serviceId,
+                ServiceCategoryId: categoryId
+            },
+            function (data) {
+                window.location.reload();
+            }
+        );
+    });
+
+    $('#request-service-form').on('submit', function (jqueryEvent) {
+        jqueryEvent.preventDefault();
+
+        var serviceId = parseInt($('#request-services').val());
+        var categoryId;
+        if (serviceId >= 1 && serviceId <= 6) categoryId = 1;
+        else if (serviceId >= 7 && serviceId <= 9) categoryId = 2;
+        else if (serviceId >= 10 && serviceId <= 20) categoryId = 3;
+        else if (serviceId >= 21 && serviceId <= 25) categoryId = 4;
+        else if (serviceId >= 26 && serviceId <= 29) categoryId = 5;
+        else if (serviceId === 30) categoryId = 6;
+
+        var startDateTime = $('#request-beginDate').val() + ' ' + $('#request-beginTime').val() + ':00';
+        var endDateTime = $('#request-endDate').val() + ' ' + $('#request-endTime').val() + ':00';
+        $.post(
+            '/api/requests',
+            {
+                detail: $('#request-details').val(),
+                hide_address: ($('#request-hide-address').prop('checked')) ? 1 : 0,
+                address: $('#request-address').val(),
+                city: $('#request-city').val(),
+                state: $('#request-state').val(),
+                zipcode: parseInt($('#request-zipcode').val()),
+                start_date: startDateTime,
+                end_date: endDateTime,
+                UserId: {{#if session_user}}{{session_user.id}}{{else}}-1{{/if}},
+                ServiceId: serviceId,
+                ServiceCategoryId: categoryId
+            },
+            function (data) {
+                window.location.reload();
+            }
+        );
+    });
 </script>
 
 </body>
