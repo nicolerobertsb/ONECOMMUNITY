@@ -141,21 +141,28 @@
         <div class="modal-content">
             <h4 class="vol-modal-p">Provide a service</h4>
             <h5 class="vol-modal-p">Fill out what service you would like to add</h5>
-            <div class="row">
-                <div class="input-field col s2">
-                    <input value="" id="first_name2" type="text" class="validate">
-                    <label class="active" for="first_name2">Zip Code</label>
-                </div>
+            <div class="container-modal1">
+                <form id="contact" action="" method="post">
+                    <fieldset>
+                        <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Your Email Address" type="email" tabindex="2" required>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Your Web Site starts with http://" type="url" tabindex="4" required>
+                    </fieldset>
+                    <fieldset>
+                        <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
+                    </fieldset>
+                    <fieldset>
+                        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                    </fieldset>
+                </form>
 
-                <div class="input-field col s3">
-                    <input value="" id="first_name2" type="text" class="validate">
-                    <label class="active" for="first_name2">Service Provided</label>
-                </div>
-
-                <div class="input-field col s3">
-                    <input value="" id="first_name3" type="text" class="validate">
-                    <label class="active" for="first_name3">Type of Service</label>
-                </div>
 
             </div>
 
@@ -164,7 +171,6 @@
             <a class="waves-effect waves-light btn-small"><i class="material-icons right">send</i>submit</a>
         </div>
     </div>
-
 
     <!-- REQUEST SERVICE -->
     <!--<button data-target="modal4" class="btn modal-trigger blue darken-3">Request a service</button>-->
