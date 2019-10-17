@@ -1,5 +1,6 @@
 (function(){
-    $('browse-form').on('submit', function (jqueryEvent) {
+    var browseResults = $('#browse-results');
+    $('#browse-form').on('submit', function (jqueryEvent) {
         jqueryEvent.preventDefault();
     
         $.get(
@@ -12,6 +13,11 @@
     });
 
     function syncResults (res) {
-        
+        browseResults.empty();
+        res.forEach(function (result) {
+            var browseResultItem = `{{> browse/browse-result-item itemType="${result.itemType}" summary="${result.summary}"}}`;
+
+            browseResults.append(browseResultItem);
+        })
     }
 })();

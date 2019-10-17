@@ -57,36 +57,55 @@ router.get('/browse', function (req, res) {
                 }))
             ];
 
-            axios.get(`http://${req.headers.host}/api/services/by-category/${category}`)
+            axios.get(`http://${req.headers.host}/api/services`)
             .then(function (serviceResults) {
-                var services = [
-                    {val:0, text:'All', selected:(service === 0), disabled:false},
-                    ...(serviceResults.data.map(function (row) {
-                        return {
-                            val: row.id,
-                            text: row.service_name,
-                            selected: (row.id === service),
-                            disabled: false,
-                        }
-                    }))
-                ];
+                var servicesByCategory = {
+                    0: [{val:0, text:'All', selected:(service === 0), disabled:false}]
+                };
+                serviceResults.data.forEach(function (row) {
+
+                    if (!servicesByCategory.hasOwnProperty(row.ServiceCategoryId)) {
+                        servicesByCategory[row.ServiceCategoryId] = [];
+                        servicesByCategory[row.ServiceCategoryId].push({val:0, text:'All', selected:(service === 0), disabled:false});
+                    }
+                    servicesByCategory[row.ServiceCategoryId].push({
+                        val: row.id,
+                        text: row.service_name,
+                        selected: (row.id === service),
+                        disabled: false,
+                    })
+                });
 
                 res.render('browse', {
             
                     activeItems: gatherActiveItems(activeItems),
                     orderBy: gatherOrderingOptions(orderBy),
                     categories: serviceCategories,
-                    services: services,
+                    services: servicesByCategory[category],
                     browseResults: browseResults.data,
                     importedCss: [
-                        'imported_css/materialize-icons'
+                        {
+                            partial: 'imported_css/materialize-icons',
+                        },
                     ],
                     importedScripts: [
-                        'imported_scripts/moment'
+                        {
+                            partial: 'imported_scripts/moment',
+                        },
                     ],
                     scripts: [
-                        'scripts/materialize-select',
-                        'scripts/browse-submit'
+                        {
+                            partial: 'scripts/materialize-select',
+                        },
+                        {
+                            partial: 'scripts/browse-submit',
+                        },
+                        {
+                            partial: 'scripts/services-select-update',
+                            categorySelector: '#categories',
+                            serviceSelector: '#services',
+                            categories: servicesByCategory
+                        },
                     ]
                 });
             })
