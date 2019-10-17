@@ -96,9 +96,9 @@ router.get('/browse', function (req, res) {
                         },
                     ],
                     importedScripts: [
-                        {
-                            partial: 'imported_scripts/moment',
-                        },
+                        // {
+                        //     partial: 'imported_scripts/moment',
+                        // },
                     ],
                     scripts: [
                         {

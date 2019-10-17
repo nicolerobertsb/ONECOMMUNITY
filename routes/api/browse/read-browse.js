@@ -1,5 +1,6 @@
 // Import necessary Node.js files
 var express = require('express');
+var moment = require('moment');
 var db = require('../../../models');
 
 // Create an Express Router to allow routing via files external to server.js
@@ -49,8 +50,8 @@ function grabItems (isVolunteer, categoryId, serviceId, callback) {
                 userName: row.User.user_name,
                 category: row.Service.ServiceCategory.service_category_name,
                 service: row.Service.service_name,
-                startDate: row.start_date,
-                endDate: row.end_date,
+                startDate: moment(row.start_date).tz('America/Los_Angeles').format('MMM d, h:mma'),
+                endDate: moment(row.end_date).tz('America/Los_Angeles').format('MMM d, h:mma z'),
             }
         }));
     })
