@@ -35,7 +35,7 @@
 <!--                <button data-target="modal4" class="btn modal-trigger blue darken-3">Request a service</button>-->
                 {{/if}}
                 <li><a href="/browse" class="blue-grey-text darken-4">Browse</a></li>
-                <li><a href="#" class="blue-grey-text darken-4">About</a></li>
+                <li><a href="/about" class="blue-grey-text darken-4">About</a></li>
                 <li><a href="/contact" class="blue-grey-text darken-4">Contact</a></li>
                 {{#if session_user}}
                 <li>Logged in as: {{session_user.user_name}}</li>
@@ -50,8 +50,8 @@
 
     <ul class="sidenav nav-color" id="mobile-demo">
         <li><a href="/browse">Browse</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
         {{#if session_user}}
         <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal5">Provide a service</a></li>
         <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a></li>

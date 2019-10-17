@@ -17,6 +17,11 @@ a.card-panel.item-request {
   border-bottom: 1px solid #2196f3;
 }
 
+#aboutDiv {
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 20px;
+}
 
 .browse-box {
     /* border: solid thin #000000;
