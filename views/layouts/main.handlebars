@@ -28,13 +28,13 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
             <ul class="right hide-on-med-and-down">
-                <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Provide a service</a></li>
+                <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal5">Provide a service</a></li>
 <!--                <button data-target="modal3" class="btn modal-trigger blue darken-3">Provide a service</button>-->
                 <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a></li>
 <!--                <button data-target="modal4" class="btn modal-trigger blue darken-3">Request a service</button>-->
                 <li><a href="/browse">Browse</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/contact">Contact</a></li>
                 <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Sign up</a></li>
                 <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal2">Login</a></li>
 
@@ -46,12 +46,12 @@
         <li><a href="/browse">Browse</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
-        <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Provide a service</a></li>
+        <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal5">Provide a service</a></li>
 
         <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a></li>
 
-        <li><a class="waves-effect waves-light btn modal-trigger" href="#modal3">Sign up</a></li>
-        <li><a class="waves-effect waves-light btn modal-trigger" href="#modal2">Login</a></li>
+        <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Sign up</a></li>
+        <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal2">Login</a></li>
 
         <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal1">Contributions</a></li>
     </ul>
@@ -65,7 +65,7 @@
     </div>
 
 
-        <!-- Modal Structure 2-->
+        <!-- Modal Structure 2 LOGIN-->
         <div id="modal2" class="modal">
             <div class="modal-content">
                 <form class="modal-content animate" action="/action_page.php" method="post">
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        {{!-- MODAL STRUCTURE 3 --}}
+        {{!-- MODAL STRUCTURE 3 SIGN UP--}}
 
         <!-- The Modal (contains the Sign Up form) -->
         <div id="modal3" class="modal">
@@ -132,6 +132,53 @@
                 </div>
             </form>
         </div>
+
+    <!-- VOLUNTEER -->
+    <!--<button data-target="modal3" class="btn modal-trigger blue darken-3">Provide a service</button>-->
+
+    <!-- Modal Structure -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <h4 class="vol-modal-p">Provide a service</h4>
+            <h5 class="vol-modal-p">Fill out what service you would like to add</h5>
+            <div class="row">
+                <div class="input-field col s2">
+                    <input value="" id="first_name2" type="text" class="validate">
+                    <label class="active" for="first_name2">Zip Code</label>
+                </div>
+
+                <div class="input-field col s3">
+                    <input value="" id="first_name2" type="text" class="validate">
+                    <label class="active" for="first_name2">Service Provided</label>
+                </div>
+
+                <div class="input-field col s3">
+                    <input value="" id="first_name3" type="text" class="validate">
+                    <label class="active" for="first_name3">Type of Service</label>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a class="waves-effect waves-light btn-small"><i class="material-icons right">send</i>submit</a>
+        </div>
+    </div>
+
+
+    <!-- REQUEST SERVICE -->
+    <!--<button data-target="modal4" class="btn modal-trigger blue darken-3">Request a service</button>-->
+
+    <!-- Modal Structure -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
     </header>
 
     <main>
