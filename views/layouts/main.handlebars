@@ -101,7 +101,7 @@
 
         <!-- The Modal (contains the Sign Up form) -->
         <div id="modal3" class="modal">
-            <span onclick="document.getElementById('modal3').style.display='none'" class="close"
+            <span onclick="M.modal.getInstance(this).close();" class="close"
                 title="Close Modal">times;</span>
             <form class="modal-content" action="/action_page.php">
                 <div class="container">
@@ -138,38 +138,92 @@
 
     <!-- Modal Structure -->
     <div id="modal5" class="modal">
-        <div class="modal-content">
-            <h4 class="vol-modal-p">Provide a service</h4>
-            <h5 class="vol-modal-p">Fill out what service you would like to add</h5>
-            <div class="container-modal1">
-                <form id="contact" action="" method="post">
-                    <fieldset>
-                        <input placeholder="Your name" type="text" tabindex="1" required autofocus>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="Your Email Address" type="email" tabindex="2" required>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="Your Web Site starts with http://" type="url" tabindex="4" required>
-                    </fieldset>
-                    <fieldset>
-                        <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
-                    </fieldset>
-                    <fieldset>
-                        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-                    </fieldset>
-                </form>
-
-
+        <form action="/api/provided-services" method="POST">
+            <div class="modal-content">
+                <h4 class="vol-modal-p">Provide a service</h4>
+                <h5 class="vol-modal-p">Fill out what service you would like to provide and when</h5>
+                <div class="container">
+                    <div class="row">
+                        <div class="input-field col s8 push-s2">
+                            <select id="providedService-services">
+                                <optgroup label="Pet">
+                                    <option value="1">Grooming</option>
+                                    <option value="2">Walking</option>
+                                    <option value="3">Playdate</option>
+                                    <option value="4">Boarding</option>
+                                    <option value="5">Sitting</option>
+                                    <option value="6">Other</option>
+                                </optgroup>
+                                <optgroup label="Delivery">
+                                    <option value="7">Meal</option>
+                                    <option value="8">Groceries</option>
+                                    <option value="9">Other</option>
+                                </optgroup>
+                                <optgroup label="Household">
+                                    <option value="10">Cleaning</option>
+                                    <option value="11">Moving</option>
+                                    <option value="12">Unpacking</option>
+                                    <option value="13">Furniture Assembly</option>
+                                    <option value="14">Mounting</option>
+                                    <option value="15">Home Repairs</option>
+                                    <option value="16">Plumbing</option>
+                                    <option value="17">Painting</option>
+                                    <option value="18">Yard Work</option>
+                                    <option value="19">Installation</option>
+                                    <option value="20">Other</option>
+                                </optgroup>
+                                <optgroup label="Professional">
+                                    <option value="21">Taxes</option>
+                                    <option value="22">Finances</option>
+                                    <option value="23">Budgeting</option>
+                                    <option value="24">Tutoring</option>
+                                    <option value="25">Other</option>
+                                </optgroup>
+                                <optgroup label="Community Events">
+                                    <option value="26">Soup Kitchen</option>
+                                    <option value="27`">Food Bank</option>
+                                    <option value="28">Public Health</option>
+                                    <option value="29">Other</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="30">Other</option>
+                                </optgroup>
+                            </select>
+                            <label>Services</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4">
+                            <p>Available Start Time:</p>
+                        </div>
+                        <div class="col s4">
+                            <label for="providedService-beginDate">Begin Date</label>
+                            <input type="text" id="providedService-beginDate" class="datepicker">
+                        </div>
+                        <div class="col s4">
+                            <label for="providedService-beginTime">Begin Time</label>
+                            <input type="text" id="providedService-beginTime" class="timepicker">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4">
+                            <p>Available End Time:</p>
+                        </div>
+                        <div class="col s4">
+                            <label for="providedService-endDate">End Date</label>
+                            <input type="text" id="providedService-endDate" class="datepicker">
+                        </div>
+                        <div class="col s4">
+                            <label for="providedService-endTime">End Time</label>
+                            <input type="text" id="providedService-endTime" class="timepicker">
+                        </div>
+                    </div>
+                </div>
             </div>
-
-        </div>
-        <div class="modal-footer">
-            <a class="waves-effect waves-light btn-small"><i class="material-icons right">send</i>submit</a>
-        </div>
+            <div class="modal-footer">
+                <button class="btn waves-effect waves-light blue darken-3" type="submit"><i class="material-icons right">send</i>submit</button>
+            </div>
+        </form>
     </div>
 
     <!-- REQUEST SERVICE -->
@@ -177,13 +231,124 @@
 
     <!-- Modal Structure -->
     <div id="modal4" class="modal">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
+        <form action="/api/provided-services" method="POST">
+            <div class="modal-content">
+                <h4 class="vol-modal-p">Request a service</h4>
+                <h5 class="vol-modal-p">Fill out what service you would like to request and when</h5>
+                <div class="container">
+                    <div class="row">
+                        <div class="input-field col s8 push-s2">
+                            <select id="request-services">
+                                <optgroup label="Pet">
+                                    <option value="1">Grooming</option>
+                                    <option value="2">Walking</option>
+                                    <option value="3">Playdate</option>
+                                    <option value="4">Boarding</option>
+                                    <option value="5">Sitting</option>
+                                    <option value="6">Other</option>
+                                </optgroup>
+                                <optgroup label="Delivery">
+                                    <option value="7">Meal</option>
+                                    <option value="8">Groceries</option>
+                                    <option value="9">Other</option>
+                                </optgroup>
+                                <optgroup label="Household">
+                                    <option value="10">Cleaning</option>
+                                    <option value="11">Moving</option>
+                                    <option value="12">Unpacking</option>
+                                    <option value="13">Furniture Assembly</option>
+                                    <option value="14">Mounting</option>
+                                    <option value="15">Home Repairs</option>
+                                    <option value="16">Plumbing</option>
+                                    <option value="17">Painting</option>
+                                    <option value="18">Yard Work</option>
+                                    <option value="19">Installation</option>
+                                    <option value="20">Other</option>
+                                </optgroup>
+                                <optgroup label="Professional">
+                                    <option value="21">Taxes</option>
+                                    <option value="22">Finances</option>
+                                    <option value="23">Budgeting</option>
+                                    <option value="24">Tutoring</option>
+                                    <option value="25">Other</option>
+                                </optgroup>
+                                <optgroup label="Community Events">
+                                    <option value="26">Soup Kitchen</option>
+                                    <option value="27`">Food Bank</option>
+                                    <option value="28">Public Health</option>
+                                    <option value="29">Other</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="30">Other</option>
+                                </optgroup>
+                            </select>
+                            <label>Services</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s8 push-s2">
+                            <textarea id="request-details" class="materialize-textarea" data-length="500"></textarea>
+                            <label for="request-details">Details</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <label>
+                                <input type="checkbox" id="request-hide-address">
+                                <span>Hide Address Publicly</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="request-address" type="text" class="validate">
+                            <label for="request-address">Address</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="request-city" type="text" class="validate">
+                            <label for="request-city">City</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="request-state" type="text" class="validate">
+                            <label for="request-state">State</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input id="request-zipcode" type="text" class="validate">
+                            <label for="request-zipcode">Zip Code</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4">
+                            <p>Available Start Time:</p>
+                        </div>
+                        <div class="col s4">
+                            <label for="request-beginDate">Begin Date</label>
+                            <input type="text" id="request-beginDate" class="datepicker">
+                        </div>
+                        <div class="col s4">
+                            <label for="request-beginTime">Begin Time</label>
+                            <input type="text" id="request-beginTime" class="timepicker">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4">
+                            <p>Available End Time:</p>
+                        </div>
+                        <div class="col s4">
+                            <label for="request-endDate">End Date</label>
+                            <input type="text" id="request-endDate" class="datepicker">
+                        </div>
+                        <div class="col s4">
+                            <label for="request-endTime">End Time</label>
+                            <input type="text" id="request-endTime" class="timepicker">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn waves-effect waves-light blue darken-3" type="submit"><i class="material-icons right">send</i>submit</button>
+            </div>
+        </form>
     </div>
     </header>
 
@@ -231,7 +396,11 @@
     <script>
 
     $('.sidenav').sidenav();
+    $('select').formSelect();
     $('.modal').modal();
+    $('.datepicker').datepicker();
+    $('.timepicker').timepicker();
+    $('#request-details').characterCounter();
     M.updateTextFields();
 
     var mybutton = document.getElementById("myBtn");
