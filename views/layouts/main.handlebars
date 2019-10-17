@@ -241,14 +241,10 @@
         document.documentElement.scrollTop = 0;
     }
 
-    // Get the modal
-    var modal = document.getElementById('modal2');
-    var modal = document.getElementById('modal3');
-
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target.className === 'modal') {
+            M.Modal.getInstance(event.target).close();
         }
     }
 </script>
