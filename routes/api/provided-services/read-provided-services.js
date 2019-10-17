@@ -5,8 +5,6 @@ var db = require('../../../models');
 // Create an Express Router to allow routing via files external to server.js
 var router = express.Router();
 
-console.log('provided-services');
-
 
 router.get("/api/provided-services", function(req, res) {
 	db.ProvidedServices.findAll()
