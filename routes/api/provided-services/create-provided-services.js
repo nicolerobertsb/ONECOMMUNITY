@@ -6,20 +6,11 @@ var db = require('../../../models');
 var router = express.Router();
 
 
-router.get("/api/provided-services", function(req, res) {
-	db.ProvidedServices.findAll()
+router.post("/api/provided-services", function(req, res) {
+	console.log(req.body);
+	db.ProvidedServices.create(req.body)
 	.then(function(dbProvidedServices) {
 		res.json(dbProvidedServices);
-	});
-});
-
-router.get("/api/provided-services/:id", function(req, res) {
-	db.ProvidedServices.findOne({
-		where: {
-			id: req.params.id
-		}
-	}).then(function(dbProvidedService) {
-		res.json(dbProvidedService);
 	});
 });
 

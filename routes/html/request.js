@@ -19,6 +19,7 @@ router.get('/request/:id', function (req, res) {
 
         // })
         res.render('request', {
+            session_user: req.session.user || false,
             detail: request.detail,
             hide_address: request.hide_address,
             address: request.address,

@@ -9,22 +9,26 @@ console.log('read-services');
 
 
 router.get("/api/services", function(req, res) {
-    // 1. Add a join to include all of users
-    db.Services.findAll({}).then(function(dbService) {
-      res.json(dbService);
-    });
+  db.Services.findAll({}).then(function(dbService) {
+    res.json(dbService);
   });
+});
 
-  router.get("/api/services/:id", function(req, res) {
-    // 2; Add a join to include all of users
-    db.Services.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbService) {
-      res.json(dbService);
-    });
+router.get("/api/services/by-category/:id", function (req, res) {
+  db.Services.findAll({}).then(function (dbServices) {
+    res.json(dbServices);
   });
+});
+
+router.get("/api/services/:id", function(req, res) {
+  db.Services.findOne({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dbService) {
+    res.json(dbService);
+  });
+});
 
 // Export these routers
 module.exports = router;

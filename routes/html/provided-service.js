@@ -19,6 +19,7 @@ router.get('/provided-service/:id', function (req, res) {
 
         // })
         res.render('provided-service', {
+            session_user: req.session.user || false,
         });
     });
 });

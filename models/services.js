@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
   Services.associate = function(models) {
     Services.belongsTo(models.ServiceCategories);
     Services.hasMany(models.ProvidedServices);
+    Services.hasMany(models.Requests);
   };
   return Services;
 };

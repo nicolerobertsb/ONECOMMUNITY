@@ -1,5 +1,6 @@
 (function(){
-    $('browse-form').on('submit', function (jqueryEvent) {
+    var browseResults = $('#browse-results');
+    $('#browse-form').on('submit', function (jqueryEvent) {
         jqueryEvent.preventDefault();
     
         $.get(
@@ -12,6 +13,33 @@
     });
 
     function syncResults (res) {
-        
+        browseResults.empty();
+        res.forEach(function (result) {
+            var volunteerItem = `{{> browse/browse-result-item
+                id="${result.id}"
+                itemType="${result.itemType}"
+                isVolunteer=true
+                userName="${result.userName}"
+                category="${result.category}"
+                service="${result.service}"
+                startDate="${result.startDate}"
+                endDate="${result.endDate}"}}`;
+            var requestItem = `{{> browse/browse-result-item
+                id="${result.id}"
+                itemType="${result.itemType}"
+                isVolunteer=false
+                userName="${result.userName}"
+                category="${result.category}"
+                service="${result.service}"
+                startDate="${result.startDate}"
+                endDate="${result.endDate}"}}`;
+
+            if (result.isVolunteer) {
+                browseResults.append(volunteerItem);
+            }
+            else {
+                browseResults.append(requestItem);
+            }
+        })
     }
 })();

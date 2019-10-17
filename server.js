@@ -1,6 +1,8 @@
 var express = require('express');
+var session = require('express-session');
 var handlebars = require('express-handlebars');
 var routes = require('./routes');
+require('dotenv').config();
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -26,6 +28,8 @@ app.engine("handlebars", handlebars({
     }
 }));
 app.set("view engine", "handlebars");
+
+app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
 
 // Set up Express to use our external routes
 app.use(routes);

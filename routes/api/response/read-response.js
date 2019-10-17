@@ -9,7 +9,7 @@ console.log('read-response');
 
 router.get("/api/responses", function(req,res){
     //add a join to include all the responses
-    db.responses.findAll({}).then(function(dbResponse){
+    db.Responses.findAll({}).then(function(dbResponse){
         res.json(dbResponse);
     });
 });

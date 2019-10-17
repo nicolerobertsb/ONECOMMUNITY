@@ -11,8 +11,9 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     ProvidedServices.associate = function (models) {
-        ProvidedServices.belongsTo(models.Services);
         ProvidedServices.belongsTo(models.Users);
+        ProvidedServices.belongsTo(models.Services);
+        ProvidedServices.belongsTo(models.ServiceCategories);
     };
 
     return ProvidedServices;
