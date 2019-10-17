@@ -17,6 +17,7 @@ a.card-panel.item-request {
   border-bottom: 1px solid #2196f3;
 }
 
+
 .browse-box {
     /* border: solid thin #000000;
     border-radius: 1rem; */
@@ -29,15 +30,15 @@ a.card-panel.item-request {
     margin-top: 1px;
 }
 
-.item-request {
+/* .item-request {
     background-color: red;
-    /*margin: 0.5%;*/
+    margin: 0.5%;
 }
 
 .item-volunteer {
     background-color: blue;
-    /*margin: 0.5%;*/
-}
+    margin: 0.5%;
+} */
 
 main {
     text-align: center;
@@ -89,6 +90,7 @@ body, html {
 body {
     /* The image used */
     background-image: url("/images/1791.jpg");
+    background-color: #222a2a;
 
     /* Full height */
     height: 100%;
