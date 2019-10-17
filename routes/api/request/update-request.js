@@ -21,7 +21,7 @@ router.put("/api/requests", function(req, res) {
       zipcode: req.body.zipcode
     }, {
       where: {
-        id: req.body.id
+        id: parseInt(req.body.id)
       }
     })
       .then(function(dbRequest) {

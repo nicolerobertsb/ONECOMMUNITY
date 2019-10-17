@@ -18,7 +18,7 @@ router.get("/api/responses/:id", function(req, res){
     // add a join to include all of the responses
     db.Responses.findOne({
         where: {
-            id: req.params.id
+            id: parseInt(req.params.id)
         }
     }).then(function(dbResponse){
         res.json(dbResponse);

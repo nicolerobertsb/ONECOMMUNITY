@@ -10,7 +10,7 @@ console.log('delete-request');
 router.delete("api/requests/:id", function(req, res){
     db.Requests.destroy({
         where: {
-            id: req.params.id
+            id: parseInt(req.params.id)
         }
     }).then(function(dbRequest){
         res.json(dbRequest);
