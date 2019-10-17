@@ -2,15 +2,21 @@
 var express = require('express');
 var moment = require('moment');
 var db = require('../../../models');
+const { Op } = require('sequelize');
 
 // Create an Express Router to allow routing via files external to server.js
 var router = express.Router();
 
-function grabItems (isVolunteer, categoryId, serviceId, callback) {
+function grabItems (isVolunteer, categoryId, serviceId, orderBy, callback) {
     var itemType = (isVolunteer) ? 'volunteer' : 'request';
     var browseModel = (isVolunteer) ? db.ProvidedServices : db.Requests;
 
     var findClause = {
+        where: {
+            end_date: {
+                [Op.gt]: new Date()
+            }
+        },
         include: [
             {
                 model: db.Users,
@@ -28,16 +34,16 @@ function grabItems (isVolunteer, categoryId, serviceId, callback) {
             }
         ]
     };
+
     if (serviceId !== 0) {
-        findClause.where = {
-            ServiceId: serviceId
-        };
+        findClause.where.ServiceId = serviceId;
     }
     else if (categoryId !== 0) {
-        console.log(browseModel);
-        findClause.where = {
-            ServiceCategoryId: categoryId
-        }
+        findClause.where.ServiceCategoryId = categoryId;
+    }
+
+    if (orderBy === 0) {
+        findClause.order = '"end_date" ASC';
     }
 
     browseModel.findAll(findClause)
@@ -50,8 +56,8 @@ function grabItems (isVolunteer, categoryId, serviceId, callback) {
                 userName: row.User.user_name,
                 category: row.Service.ServiceCategory.service_category_name,
                 service: row.Service.service_name,
-                startDate: moment(row.start_date).tz('America/Los_Angeles').format('MMM d, h:mma'),
-                endDate: moment(row.end_date).tz('America/Los_Angeles').format('MMM d, h:mma z'),
+                startDate: moment(row.start_date).tz('America/Los_Angeles').format('MMM D, h:mma z'),
+                endDate: moment(row.end_date).tz('America/Los_Angeles').format('MMM D, h:mma z'),
             }
         }));
     })
@@ -61,12 +67,21 @@ function grabItems (isVolunteer, categoryId, serviceId, callback) {
 router.get('/api/browse', function (req, res) {
     // If we're pulling all volunteers and requests
     if (parseInt(req.query.activeItems) === 0) {
-        grabItems(true, parseInt(req.query.category), parseInt(req.query.service), function (providedServices) {
-            grabItems(false, parseInt(req.query.category), parseInt(req.query.service), function (requests) {
+        grabItems(true, parseInt(req.query.category), parseInt(req.query.service), req.query.orderBy, function (providedServices) {
+            grabItems(false, parseInt(req.query.category), parseInt(req.query.service), req.query.orderBy, function (requests) {
                 var resultingItems = [
                     ...providedServices,
                     ...requests,
-                ]
+                ];
+
+                console.log('Unsorted:');
+                console.log(resultingItems);
+                resultingItems = resultingItems.sort(function (a, b) {
+                    return moment(a.endDate, 'MMM D, h:mma z') > moment(b.endDate, 'MMM D, h:mma z');
+                })
+                console.log('Sorted:');
+                console.log(resultingItems);
+
                 res.json(resultingItems);
             });
         });
@@ -75,19 +90,10 @@ router.get('/api/browse', function (req, res) {
     else {
         var isVolunteer = (parseInt(req.query.activeItems) === 1);
 
-        grabItems(isVolunteer, parseInt(req.query.category), parseInt(req.query.service), function (resultingItems) {
+        grabItems(isVolunteer, parseInt(req.query.category), parseInt(req.query.service), req.query.orderBy, function (resultingItems) {
             res.json(resultingItems);
         });
     }
-    // var rows = [
-    //     {id: 1, itemType:'volunteer', summary:'Nathan<br>Available for: Pet - Walking<br>Time: Oct 19, 7am-7pm'},
-    //     {id: 1, itemType:'volunteer', summary:'Jason<br>Available for: Pet - Grooming<br>Time: Oct 20, 7am-3pm'},
-    //     {id: 1, itemType:'request', summary:'Tanaka<br>Requesting: Delivery - Other<br>Time: Oct 20, 6pm-8pm'},
-    //     {id: 1, itemType:'request', summary:'Miho<br>Requesting: Household - Yard Work<br>Time: Oct 21, 6am-2pm'},
-    //     {id: 1, itemType:'volunteer', summary:'Mary<br>Available for: Professional - Taxes<br>Time: Oct 21, 6pm-9pm'},
-    //     {id: 1, itemType:'request', summary:'Jerry<br>Requesting: Household - Plumbing<br>Time: Oct 21, 9pm-3am'},
-    //     {id: 1, itemType:'volunteer', summary:'Ruby<br>Available for: Household - Home Repairs<br>Time: Oct 23, 4pm-8pm'},
-    // ];
 });
 
 module.exports = router;

@@ -52,11 +52,11 @@ module.exports = function(sequelize, DataTypes) {
       },
       start_date: {
           type: DataTypes.DATE,
-          allowNull: true
+          allowNull: false
       },
       end_date: {
           type: DataTypes.DATE,
-          allowNull: true
+          allowNull: false
       }
     });
       Requests.associate = function(models) {
