@@ -3,9 +3,9 @@
         <h3 class="title logo-p">Browse Active Volunteers and Requests</h3>
     </div>
     <div class="row">
-        <form id="browse-form" action="/api/browse" method="GET">
+        <form id="browse-form" action="/browse" method="GET">
             <div class="input-field col s12 m2 browse-box">
-                <select id="active-items">
+                <select name="activeItems" id="active-items">
                     {{#each activeItems}}
                     {{> forms/option-element val=this.val text=this.text selected=this.selected disabled=this.disabled}}
                     {{/each}}
@@ -13,7 +13,7 @@
                 <label>Active Items</label>
             </div>
             <div class="input-field col s12 m3 browse-box">
-                <select id="categories">
+                <select name="category" id="categories">
                     {{#each categories}}
                     {{> forms/option-element val=this.val text=this.text selected=this.selected disabled=this.disabled}}
                     {{/each}}
@@ -21,7 +21,7 @@
                 <label>Service Category</label>
             </div>
             <div class="input-field col s12 m3 browse-box">
-                <select id="services">
+                <select name="service" id="services">
                     {{#each services}}
                     {{> forms/option-element val=this.val text=this.text selected=this.selected disabled=this.disabled}}
                     {{/each}}
@@ -29,7 +29,7 @@
                 <label>Service Type</label>
             </div>
             <div class="input-field col s12 m2 browse-box">
-                <select id="order-by">
+                <select name="orderBy" id="order-by">
                     {{#each orderBy}}
                     {{> forms/option-element val=this.val text=this.text selected=this.selected disabled=this.disabled}}
                     {{/each}}
@@ -45,7 +45,15 @@
     </div>
     <div id="browse-results" class="row">
         {{#each browseResults}}
-            {{> browse/browse-result-item itemType=this.itemType summary=this.summary}}
+            {{> browse/browse-result-item
+                id=this.id
+                itemType=this.itemType
+                isVolunteer=this.isVolunteer
+                userName=this.userName
+                category=this.category
+                service=this.service
+                startDate=this.startDate
+                endDate=this.endDate}}
         {{/each}}
     </div>
 

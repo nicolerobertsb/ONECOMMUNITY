@@ -52,16 +52,17 @@ module.exports = function(sequelize, DataTypes) {
       },
       start_date: {
           type: DataTypes.DATE,
-          allowNull: true
+          allowNull: false
       },
       end_date: {
           type: DataTypes.DATE,
-          allowNull: true
+          allowNull: false
       }
     });
       Requests.associate = function(models) {
         Requests.belongsTo(models.Users);
         Requests.belongsTo(models.Services);
+        Requests.belongsTo(models.ServiceCategories);
         Requests.hasMany(models.Responses);
       };
     return Requests;

@@ -15,9 +15,31 @@
     function syncResults (res) {
         browseResults.empty();
         res.forEach(function (result) {
-            var browseResultItem = `{{> browse/browse-result-item itemType="${result.itemType}" summary="${result.summary}"}}`;
+            var volunteerItem = `{{> browse/browse-result-item
+                id="${result.id}"
+                itemType="${result.itemType}"
+                isVolunteer=true
+                userName="${result.userName}"
+                category="${result.category}"
+                service="${result.service}"
+                startDate="${result.startDate}"
+                endDate="${result.endDate}"}}`;
+            var requestItem = `{{> browse/browse-result-item
+                id="${result.id}"
+                itemType="${result.itemType}"
+                isVolunteer=false
+                userName="${result.userName}"
+                category="${result.category}"
+                service="${result.service}"
+                startDate="${result.startDate}"
+                endDate="${result.endDate}"}}`;
 
-            browseResults.append(browseResultItem);
+            if (result.isVolunteer) {
+                browseResults.append(volunteerItem);
+            }
+            else {
+                browseResults.append(requestItem);
+            }
         })
     }
 })();
