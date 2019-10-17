@@ -62,6 +62,7 @@ module.exports = function(sequelize, DataTypes) {
       Requests.associate = function(models) {
         Requests.belongsTo(models.Users);
         Requests.belongsTo(models.Services);
+        Requests.belongsTo(models.ServiceCategories);
         Requests.hasMany(models.Responses);
       };
     return Requests;

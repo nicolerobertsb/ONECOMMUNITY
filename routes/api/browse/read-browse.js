@@ -5,7 +5,10 @@ var db = require('../../../models');
 // Create an Express Router to allow routing via files external to server.js
 var router = express.Router();
 
-function grabProvidedServices (serviceId, callback) {
+function grabItems (isVolunteer, categoryId, serviceId, callback) {
+    var itemType = (isVolunteer) ? 'volunteer' : 'request';
+    var browseModel = (isVolunteer) ? db.ProvidedServices : db.Requests;
+
     var findClause = {
         include: [
             {
@@ -29,42 +32,27 @@ function grabProvidedServices (serviceId, callback) {
             ServiceId: serviceId
         };
     }
-
-    db.ProvidedServices.findAll(findClause)
-    .then(function (providedServices) {
-        callback(providedServices);
-    })
-    .catch(err => console.log(err));
-}
-
-function grabRequests (serviceId, callback) {
-    var findClause = {
-        include: [
-            {
-                model: db.Users,
-                required: true
-            },
-            {
-                model: db.Services,
-                required: true,
-                include: [
-                    {
-                        model: db.ServiceCategories,
-                        required: true
-                    }
-                ]
-            }
-        ]
-    };
-    if (serviceId !== 0) {
+    else if (categoryId !== 0) {
+        console.log(browseModel);
         findClause.where = {
-            ServiceId: serviceId
-        };
+            ServiceCategoryId: categoryId
+        }
     }
 
-    db.Requests.findAll(findClause)
-    .then(function (requests) {
-        callback(requests);
+    browseModel.findAll(findClause)
+    .then(function (rows) {
+        callback(rows.map(function (row) {
+            return {
+                id: row.id,
+                itemType: itemType,
+                isVolunteer: isVolunteer,
+                userName: row.User.user_name,
+                category: row.Service.ServiceCategory.service_category_name,
+                service: row.Service.service_name,
+                startDate: row.start_date,
+                endDate: row.end_date,
+            }
+        }));
     })
     .catch(err => console.log(err));
 }
@@ -72,90 +60,22 @@ function grabRequests (serviceId, callback) {
 router.get('/api/browse', function (req, res) {
     // If we're pulling all volunteers and requests
     if (parseInt(req.query.activeItems) === 0) {
-        grabProvidedServices(parseInt(req.query.service), function (providedServices) {
-            grabRequests(parseInt(req.query.service), function (requests) {
-                var rows;
-                if (providedServices.length === 0) {
-                    rows = requests.map(function (row) {
-                        return {
-                            id: row.id,
-                            itemType: 'request',
-                            isVolunteer: false,
-                            userName: row.User.user_name,
-                            category: row.Service.ServiceCategory.service_category_name,
-                            service: row.Service.service_name,
-                            startDate: row.start_date,
-                            endDate: row.end_date,
-                        }
-                    });
-                }
-                else if (requests.length === 0) {
-                    rows = providedServices.map(function (row) {
-                        return {
-                            id: row.id,
-                            itemType: 'volunteer',
-                            isVolunteer: true,
-                            userName: row.User.user_name,
-                            category: row.Service.ServiceCategory.service_category_name,
-                            service: row.Service.service_name,
-                            startDate: row.start_date,
-                            endDate: row.end_date,
-                        }
-                    });
-                }
-                else {
-                    rows = [];
-                    while (providedServices.length !== 0) {
-                        var providedService = providedServices.pop();
-                        rows.push({
-                            id: providedService.id,
-                            itemType: 'volunteer',
-                            isVolunteer: true,
-                            userName: providedService.User.user_name,
-                            category: providedService.Service.ServiceCategory.service_category_name,
-                            service: providedService.Service.service_name,
-                            startDate: providedService.start_date,
-                            endDate: providedService.end_date,
-                        });
-                        while (requests.length !== 0) {
-                            var request = requests.pop();
-                            rows.push({
-                                id: request.id,
-                                itemType: 'request',
-                                isVolunteer: false,
-                                userName: request.User.user_name,
-                                category: request.Service.ServiceCategory.service_category_name,
-                                service: request.Service.service_name,
-                                startDate: request.start_date,
-                                endDate: request.end_date,
-                            });
-                        }
-                    }
-                }
-                res.json(rows);
+        grabItems(true, parseInt(req.query.category), parseInt(req.query.service), function (providedServices) {
+            grabItems(false, parseInt(req.query.category), parseInt(req.query.service), function (requests) {
+                var resultingItems = [
+                    ...providedServices,
+                    ...requests,
+                ]
+                res.json(resultingItems);
             });
         });
     }
     // If we're pulling only one
     else {
         var isVolunteer = (parseInt(req.query.activeItems) === 1);
-        var itemType = (isVolunteer) ? 'volunteer' : 'request';
-        var grabFunction = (isVolunteer) ? grabProvidedServices : grabRequests;
 
-        grabFunction(parseInt(req.query.service), function (resultingItems) {
-            var rows = resultingItems.map(function (row) {
-                return {
-                    id: row.id,
-                    itemType: itemType,
-                    isVolunteer: isVolunteer,
-                    userName: row.User.user_name,
-                    category: row.Service.ServiceCategory.service_category_name,
-                    service: row.Service.service_name,
-                    startDate: row.start_date,
-                    endDate: row.end_date,
-                }
-            });
-            res.json(rows);
+        grabItems(isVolunteer, parseInt(req.query.category), parseInt(req.query.service), function (resultingItems) {
+            res.json(resultingItems);
         });
     }
     // var rows = [

@@ -43,5 +43,5 @@ INSERT INTO services (ServiceCategoryId, service_name, createdAt, updatedAt) VAL
 
 INSERT INTO users (user_name, zipcode, about_me, email, password, createdAt, updatedAt) VALUES ('Jon', '98052', 'I am me', 'jsea@uw,edu', 'password', '2019-10-15 01:43:56', '2019-10-15 01:43:56');
 
-INSERT INTO providedservices (UserId, ServiceId, start_date, end_date, createdAt, updatedAt)
-VALUES (1, 1, '2019-10-15 01:43:56', '2019-10-15 01:43:56', '2019-10-15 01:43:56', '2019-10-15 01:43:56');
+INSERT INTO providedservices (UserId, ServiceId, ServiceCategoryId, start_date, end_date, createdAt, updatedAt)
+VALUES (1, 1, 1, '2019-10-15 01:43:56', '2019-10-15 01:43:56', '2019-10-15 01:43:56', '2019-10-15 01:43:56');
