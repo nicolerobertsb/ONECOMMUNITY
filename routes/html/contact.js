@@ -7,7 +7,7 @@ var router = express.Router();
 console.log("contactRoute")
 
 
-router.get('/Contact', function (req, res) {
+router.get('/contact', function (req, res) {
 
   res.render('contact', {
     session_user: req.session.user || false,

@@ -7,7 +7,7 @@ var router = express.Router();
 console.log("aboutRoute")
 
 
-router.get('/About', function (req, res) {
+router.get('/about', function (req, res) {
 
   res.render('about', {
     session_user: req.session.user || false,
