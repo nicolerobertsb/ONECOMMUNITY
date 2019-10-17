@@ -13,9 +13,18 @@
     });
 
     function syncResults (res) {
+        console.log(res);
         browseResults.empty();
         res.forEach(function (result) {
-            var browseResultItem = `{{> browse/browse-result-item itemType="${result.itemType}" summary="${result.summary}"}}`;
+            var browseResultItem = `{{> browse/browse-result-item
+                id="${result.id}"
+                itemType="${result.itemType}"
+                isVolunteer="${result.isVolunteer}"
+                userName="${result.userName}"
+                category="${result.category}"
+                service="${result.service}"
+                startDate="${result.startDate}"
+                endDate="${result.endDate}"}}`;
 
             browseResults.append(browseResultItem);
         })

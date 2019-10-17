@@ -40,7 +40,14 @@ router.get('/browse', function (req, res) {
     var service = req.query.service || 0;
     var orderBy = req.query.orderBy || 0;
 
-    axios.get(`http://${req.headers.host}/api/browse`)
+    axios.get(`http://${req.headers.host}/api/browse`, {
+        params: {
+            activeItems: activeItems,
+            category: category,
+            service: service,
+            orderBy: orderBy,
+        }
+    })
     .then(function (browseResults) {
 
         axios.get(`http://${req.headers.host}/api/service-categories`)
