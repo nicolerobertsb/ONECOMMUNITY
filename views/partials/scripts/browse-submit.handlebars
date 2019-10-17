@@ -42,4 +42,23 @@
             }
         })
     }
+
+    browseResults.on('click', '.card-panel', function (jqueryEvent) {
+        jqueryEvent.preventDefault();
+        console.log($(this).attr('data-id'));
+        $.get('/api/requests/' + $(this).attr('data-id'), function (data) {
+            $('#request-detail-name').text('{{#if session_user}}{{session_user.user_name}}{{/if}}');
+            $('#request-detail-service').text(data.Service.ServiceCategory.service_category_name + ' - ' + data.Service.service_name);
+            $('#request-detail-detail').text(data.detail);
+            $('#request-detail-address').text(data.address);
+            $('#request-detail-city').text(data.city);
+            $('#request-detail-state').text(data.state);
+            $('#request-detail-zipcode').text(data.zipcode);
+            $('#request-detail-start-date').text(data.start_date);
+            $('#request-detail-end-date').text(data.end_date);
+            M.Modal.getInstance(document.getElementById('request-details-modal')).open();
+            
+            console.log(data);
+        })
+    });
 })();
