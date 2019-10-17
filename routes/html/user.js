@@ -78,6 +78,7 @@ router.get('/user/:id', function (req, res) {
                     });
 
                     res.render('user', {
+                        session_user: req.session.user || false,
                         user_name: user.user_name,
                         email: user.email,
                         about_me: user.about_me,

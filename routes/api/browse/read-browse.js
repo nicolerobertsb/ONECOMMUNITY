@@ -74,13 +74,9 @@ router.get('/api/browse', function (req, res) {
                     ...requests,
                 ];
 
-                console.log('Unsorted:');
-                console.log(resultingItems);
                 resultingItems = resultingItems.sort(function (a, b) {
                     return moment(a.endDate, 'MMM D, h:mma z') > moment(b.endDate, 'MMM D, h:mma z');
-                })
-                console.log('Sorted:');
-                console.log(resultingItems);
+                });
 
                 res.json(resultingItems);
             });

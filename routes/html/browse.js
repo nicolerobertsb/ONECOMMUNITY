@@ -84,7 +84,7 @@ router.get('/browse', function (req, res) {
                 });
 
                 res.render('browse', {
-            
+                    session_user: req.session.user || false,
                     activeItems: gatherActiveItems(activeItems),
                     orderBy: gatherOrderingOptions(orderBy),
                     categories: serviceCategories,

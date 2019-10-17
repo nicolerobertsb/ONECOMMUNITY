@@ -9,7 +9,7 @@ console.log("homeRoute")
 router.get('/', function (req, res) {
 
     res.render('index', {
-        
+        session_user: req.session.user || false,
 
         // importedCss: [
         //     'imported_css/materialize-icons'

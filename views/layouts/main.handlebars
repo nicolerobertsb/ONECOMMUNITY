@@ -35,9 +35,13 @@
                 <li><a href="/browse" class="blue-grey-text darken-4">Browse</a></li>
                 <li><a href="#" class="blue-grey-text darken-4">About</a></li>
                 <li><a href="/contact" class="blue-grey-text darken-4">Contact</a></li>
+                {{#if session_user}}
+                <li>Logged in as: {{session_user.user_name}}</li>
+                <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="/logout">Logout</a></li>
+                {{else}}
                 <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Sign up</a></li>
                 <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal2">Login</a></li>
-
+                {{/if}}
             </ul>
         </div>
     </nav>
@@ -49,10 +53,13 @@
         <li> <a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal5">Provide a service</a></li>
 
         <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal4">Request a service</a></li>
-
+        {{#if session_user}}
+        <li>Logged in as: {{session_user.user_name}}</li>
+        <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="/logout">Logout</a></li>
+        {{else}}
         <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal3">Sign up</a></li>
         <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal2">Login</a></li>
-
+        {{/if}}
         <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#modal1">Contributions</a></li>
     </ul>
 
@@ -67,34 +74,34 @@
 
         <!-- Modal Structure 2 LOGIN-->
         <div id="modal2" class="modal">
-            <div class="modal-content">
-                <form class="modal-content animate" id="login-form">
-                    <div class="imgcontainer">
-                        <span onclick="M.modal.getInstance(document.getElementById('modal2')).close();" class="close"
-                            title="Close Modal">&times;</span>
-
-                    </div>
-
+            <form class="modal-content" id="login-form">
+                <div class="modal-content">
+                    <h4 class="vol-modal-p">Log into an account</h4>
+                    <h5 class="vol-modal-p">Fill out your details to log into our community!</h5>
                     <div class="container">
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
-
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
-
-                        <button type="submit">Login</button>
-                        <label>
-                            <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
+                        <div class="row">
+                            <div class="input-field col s12 m5">
+                                <input name="email" id="login-email" type="text" class="validate">
+                                <label for="login-email">E-mail Address</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input name="password" id="login-password" type="password" class="validate">
+                                <label for="login-password">Password</label>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="container" style="background-color:#f1f1f1">
-                        <button type="button" onclick="M.modal.getInstance(document.getElementById('modal2')).close();"
-                            class="cancelbtn">Cancel</button>
-                        {{!-- <span class="psw">Forgot <a href="#">password?</a></span> --}}
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col s6">
+                            <button class="btn waves-effect waves-light grey" type="button" onclick="M.modal.getInstance(document.getElementById('modal2')).close();"><i class="material-icons right">close</i>Cancel</button>
+                        </div>
+                        <div class="col s6">
+                            <button class="btn waves-effect waves-light blue darken-3" type="submit"><i class="material-icons right">send</i>Sign In</button>
+                        </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
 
         {{!-- MODAL STRUCTURE 3 SIGN UP--}}
@@ -138,10 +145,10 @@
                 <div class="modal-footer">
                     <div class="row">
                         <div class="col s6">
-                            <button class="btn waves-effect waves-light grey" type="button" onclick="M.modal.getInstance(document.getElementById('modal3')).close();"><i class="material-icons right">close</i>cancel</button>
+                            <button class="btn waves-effect waves-light grey" type="button" onclick="M.modal.getInstance(document.getElementById('modal3')).close();"><i class="material-icons right">close</i>Cancel</button>
                         </div>
                         <div class="col s6">
-                            <button class="btn waves-effect waves-light blue darken-3" type="submit"><i class="material-icons right">send</i>submit</button>
+                            <button class="btn waves-effect waves-light blue darken-3" type="submit"><i class="material-icons right">send</i>Sign Up</button>
                         </div>
                     </div>
                 </div>
@@ -437,6 +444,18 @@
 
         $.post(
             '/auth/signup',
+            $(this).serialize(),
+            function (data) {
+                window.location.reload();
+            }
+        );
+    })
+
+    $('#login-form').on('submit', function (jqueryEvent) {
+        jqueryEvent.preventDefault();
+
+        $.post(
+            '/auth/login',
             $(this).serialize(),
             function (data) {
                 window.location.reload();
