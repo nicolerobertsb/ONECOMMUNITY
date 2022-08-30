@@ -28,7 +28,7 @@
     "handlebars": "^4.4.3",
     "material-components-web": "^3.2.0",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.27",
+    "moment-timezone": "^0.5.35",
     "mysql2": "^1.7.0",
     "sequelize": "^5.19.6"
   },
